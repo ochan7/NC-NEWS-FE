@@ -1,0 +1,1 @@
+export const API_URL = 'https://olie-chan-nc-news.herokuapp.com/api'
