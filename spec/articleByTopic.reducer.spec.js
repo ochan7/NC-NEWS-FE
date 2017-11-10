@@ -37,4 +37,13 @@ describe('articlesByTopic reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
   });
+  it('handles FETCH_ARTICLES_BY_TOPIC_FAILURE', () => {
+    const prevState = articlesByTopicReducer(undefined, fetchArticlesByTopicRequest());
+    const error = 'Something went wrong';
+    const action = fetchArticlesByTopicFailure(error);
+    const newState = articlesByTopicReducer(prevState,action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.eql(error);
+    expect(newState.data).to.eql([]);
+  });
 });
