@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as types from './types';
 
-import * as API_URL from '../../config';
+import {API_URL} from '../../config';
 
 export const fetchArticlesRequest = () => ({
   type: types.FETCH_ARTICLES_REQUEST
