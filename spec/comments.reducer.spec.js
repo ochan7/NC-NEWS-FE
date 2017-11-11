@@ -19,5 +19,12 @@ describe.only('comments reducer', () => {
       expect(newState).to.equal(initialState);
     });
   });
-
+  it('handles FETCH_COMMENTS_REQUEST', () => {
+    const article_id = '5a033990e03644b9fab5289c';
+    const action = fetchCommentsRequest(article_id);
+    const newState = commentsReducer(undefined, action);
+    expect(newState.loading).to.be.true;
+    expect(newState.error).to.be.null;
+    expect(newState.data).to.eql([]);
+  });
 });
