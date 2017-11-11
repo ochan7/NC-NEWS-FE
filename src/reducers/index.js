@@ -7,6 +7,7 @@ import getComments from './getComments';
 import getTopics from './getTopics';
 import postComment from './postComment';
 import getUser from './getUser';
+
 const reducer = combineReducers({
   test, getArticles, getArticlesByTopic, getComments, getTopics, postComment, getUser
 });
