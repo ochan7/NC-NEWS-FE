@@ -6,7 +6,7 @@ export const initialState = {
   data: []
 };
 
-export default (prevState = iniitalState, action) => {
+export default (prevState = initialState, action) => {
   switch (action.type) {
   case types.GET_USER_REQUEST:
     return Object.assign({}, prevState, {
