@@ -36,4 +36,13 @@ describe('comments reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
   });
+  it('handles FETCH_COMMENTS_FAILURE', () => {
+    const prevState = commentsReducer(undefined, fetchCommentsRequest());
+    const error = 'Something went wrong';
+    const action = fetchCommentsFailure(error);
+    const newState = commentsReducer(prevState, action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.eql(error);
+    expect(newState.data).to.eql([]);
+  });
 });
