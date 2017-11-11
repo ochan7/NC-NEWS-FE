@@ -28,7 +28,7 @@ export default (article_id, vote) => {
         dispatch(putArticleSuccess(data));
       })
       .catch(error => {
-        dispatch(purArticleFailure(error.message));
+        dispatch(putArticleFailure(error.message));
       });
   };
 };

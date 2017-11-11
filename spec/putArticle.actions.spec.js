@@ -58,5 +58,24 @@ describe('putArticle', () => {
         expect(store.getActions()).to.eql(expectedActions);
       });
   });
+  it('dispatched PUT_ARTICLE_FAILURE when updating article and responds with an error', () => {
+    const error = 'ARTICLE_ID NOT FOUND';
+    const wrong_id = 'asdasdf';
+    const vote = 'down';
+    nock(API_URL)
+      .put(`/articles/${wrong_id}?vote=${vote}`)
+      .replyWithError({'message': error});
+      
+    const expectedActions = [
+      putArticleRequest(wrong_id, vote),
+      putArticleFailure(error) 
+    ];
+      
+    const store = mockStore();
   
+    return store.dispatch(putArticle(wrong_id, vote))
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
+      });
+  });
 });
