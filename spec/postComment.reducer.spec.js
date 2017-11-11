@@ -37,4 +37,13 @@ describe.only('postComment reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
   });
+  it('handles the POST_COMMENT_FAILURE', () => {
+    const prevState = postCommentReducer(undefined, postCommentFailure());
+    const error = 'Something went wrong';
+    const action = postCommentFailure(error);
+    const newState = postCommentReducer(prevState, action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.eql(error);
+    expect(newState.data).to.eql([]);
+  });
 });
