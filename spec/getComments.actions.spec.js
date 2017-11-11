@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 import fetchComments, {
   fetchCommentsRequest, fetchCommentsSuccess
-} from '../src/actions/comments';
+} from '../src/actions/getComments';
 
 import {API_URL} from '../config';
 

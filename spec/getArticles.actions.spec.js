@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 import fetchArticles, {
   fetchArticlesRequest, fetchArticlesSuccess, fetchArticlesFailure
-} from '../src/actions/articles';
+} from '../src/actions/getArticles';
 
 import  {API_URL} from '../config';
 
