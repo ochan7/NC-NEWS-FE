@@ -6,7 +6,7 @@ import {
   postCommentSuccess
 } from '../src/actions/postComment';
 
-describe.only('postComment reducer', () => {
+describe('postComment reducer', () => {
   const article_id = '5a033990e03644b9fab5289c';
   const comment = 'this is a comment';
   describe('default behaviour', () => {
