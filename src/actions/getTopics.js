@@ -20,7 +20,7 @@ export default () => {
   return (dispatch) => {
     dispatch(getTopicsRequest());
     return axios.get(`${API_URL}/topics`)
-      .tben(({data}) => {
+      .then(({data}) => {
         dispatch(getTopicsSuccess(data.topics));
       })
       .catch(({message}) => {
