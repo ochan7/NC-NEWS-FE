@@ -19,3 +19,16 @@ export const putCommentFailure = (error) => ({
   type: types.PUT_COMMENT_FAILURE,
   payload: error
 });
+
+export default (comment_id, vote) => {
+  return (dispatch) => {
+    dispatch(putCommentRequest(comment_id, vote));
+    return axios.put(`${API_URL}/comments/${comment_id}?vote=${vote}`)
+      .then(({data}) => {
+        dispatch(putCommentSuccess(data.comment));
+      })
+      .catch(error => {
+        dispatch(putCommentFailure(error.message));
+      });
+  };
+};
