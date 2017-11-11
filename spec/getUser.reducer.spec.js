@@ -37,4 +37,13 @@ describe('getUser reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
   });
+  it('handles GET_USER_FAILURE', () => {
+    const prevState = getUserReducer(undefined, getUserRequest());
+    const error = 'USERNAME NOT FOUND';
+    const action = getUserFailure(error);
+    const newState = getUserReducer(prevState, action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.eql(error);
+    expect(newState.data).to.eql([]);
+  });
 });
