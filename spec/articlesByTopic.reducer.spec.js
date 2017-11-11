@@ -7,6 +7,7 @@ import {
 } from '../src/actions/articlesByTopic';
 
 describe('articlesByTopic reducer', () => {
+  const topic = 'football';
   describe('default behaviour', () => {
     it('returns the passed previous state if an unrecognised action is passed', () => {
       const action = {type: 'whatever'};
@@ -20,7 +21,6 @@ describe('articlesByTopic reducer', () => {
     });
   });
   it('handles FETCH_ARTICLES_BY_TOPIC_REQUEST', () => {
-    const topic = 'football';
     const action = fetchArticlesByTopicRequest(topic);
     const newState = articlesByTopicReducer(undefined, action);
     expect(newState.loading).to.be.true;
@@ -28,7 +28,6 @@ describe('articlesByTopic reducer', () => {
     expect(newState.data).to.eql([]);
   });
   it('handles FETCH_ARTICLES_BY_TOPIC_SUCCESS', () => {
-    const topic = 'football';
     const prevState = articlesByTopicReducer(undefined, fetchArticlesByTopicRequest(topic));
     const data = [1,2,3];
     const action = fetchArticlesByTopicSuccess(data);
