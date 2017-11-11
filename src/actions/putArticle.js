@@ -25,7 +25,7 @@ export default (article_id, vote) => {
     dispatch(putArticleRequest(article_id, vote));
     return axios.put(`${API_URL}/articles/${article_id}?vote=${vote}`)
       .then(({data}) => {
-        dispatch(putArticleSuccess(data));
+        dispatch(putArticleSuccess(data.article));
       })
       .catch(error => {
         dispatch(putArticleFailure(error.message));

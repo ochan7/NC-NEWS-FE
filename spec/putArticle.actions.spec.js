@@ -22,7 +22,7 @@ describe('putArticle', () => {
     };
     nock(API_URL)
       .put(`/articles/${article_id}?vote=${vote}`)
-      .reply(200, data);
+      .reply(200, {article: data});
 
     const expectedActions = [
       putArticleRequest(article_id, vote),
@@ -44,7 +44,7 @@ describe('putArticle', () => {
     };
     nock(API_URL)
       .put(`/articles/${article_id}?vote=${vote}`)
-      .reply(200, data);
+      .reply(200, {article: data});
 
     const expectedActions = [
       putArticleRequest(article_id, vote),
