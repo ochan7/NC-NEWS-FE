@@ -3,8 +3,8 @@ import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import fetchArticlesByTopic, {
-  fetchArticlesByTopicFailure, fetchArticlesByTopicRequest, fetchArticlesByTopicSuccess
+import getArticlesByTopic, {
+  getArticlesByTopicFailure, getArticlesByTopicRequest, getArticlesByTopicSuccess
 } from '../src/actions/getArticlesByTopic';
 
 import {API_URL} from '../config';
@@ -15,26 +15,26 @@ describe('async action creators', () => {
   afterEach(() => {
     nock.cleanAll();
   });
-  describe('fetchArticlesByTopic', () => {
-    it('dispatches FETCH_ALL_SUCCESS when fetching articles by topic responds with 200 and data', () => {
+  describe('getArticlesByTopic', () => {
+    it('dispatches GET_ALL_SUCCESS when geting articles by topic responds with 200 and data', () => {
       const topic = 'football';
       nock(API_URL)
         .get(`/topics/${topic}/articles`)
         .reply(200, {articles: [1, 2, 3]});
 
       const expectedActions = [
-        fetchArticlesByTopicRequest(topic),
-        fetchArticlesByTopicSuccess([1, 2, 3])
+        getArticlesByTopicRequest(topic),
+        getArticlesByTopicSuccess([1, 2, 3])
       ];
 
       const store = mockStore();
 
-      return store.dispatch(fetchArticlesByTopic(topic))
+      return store.dispatch(getArticlesByTopic(topic))
         .then(() => {
           expect(store.getActions()).to.eql(expectedActions);
         });
     });
-    it('dispatched FETCH_ARTICLES_BY_TOPIC_FAILURE when fetching articles by topic responds with an error', () => {
+    it('dispatched GET_ARTICLES_BY_TOPIC_FAILURE when geting articles by topic responds with an error', () => {
       const topic = 'asdfad';
       const error = 'TOPIC DOES NOT EXIST';
       nock(API_URL)
@@ -42,13 +42,13 @@ describe('async action creators', () => {
         .replyWithError({'message': error});
 
       const expectedActions = [
-        fetchArticlesByTopicRequest(topic),
-        fetchArticlesByTopicFailure(error)
+        getArticlesByTopicRequest(topic),
+        getArticlesByTopicFailure(error)
       ];
 
       const store = mockStore();
 
-      return store.dispatch(fetchArticlesByTopic(topic))
+      return store.dispatch(getArticlesByTopic(topic))
         .then(() => {
           expect(store.getActions()).to.eql(expectedActions);
         });

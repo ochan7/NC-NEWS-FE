@@ -1,9 +1,9 @@
 import {expect} from 'chai';
 import getCommentsReducer, {initialState} from '../src/reducers/getComments';
 import {
-  fetchCommentsFailure,
-  fetchCommentsRequest,
-  fetchCommentsSuccess
+  getCommentsFailure,
+  getCommentsRequest,
+  getCommentsSuccess
 } from '../src/actions/getComments';
 
 describe('comments reducer', () => {
@@ -20,26 +20,26 @@ describe('comments reducer', () => {
       expect(newState).to.equal(initialState);
     });
   });
-  it('handles FETCH_COMMENTS_REQUEST', () => {
-    const action = fetchCommentsRequest(article_id);
+  it('handles GET_COMMENTS_REQUEST', () => {
+    const action = getCommentsRequest(article_id);
     const newState = getCommentsReducer(undefined, action);
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
-  it('handles FETCH_COMMENTS_SUCCESS', () => {
-    const prevState = getCommentsReducer(undefined, fetchCommentsRequest(article_id));
+  it('handles GET_COMMENTS_SUCCESS', () => {
+    const prevState = getCommentsReducer(undefined, getCommentsRequest(article_id));
     const data = [1,2,3];
-    const action = fetchCommentsSuccess(data);
+    const action = getCommentsSuccess(data);
     const newState = getCommentsReducer(prevState, action);
     expect(newState.loading).to.be.false;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
   });
-  it('handles FETCH_COMMENTS_FAILURE', () => {
-    const prevState = getCommentsReducer(undefined, fetchCommentsRequest());
+  it('handles GET_COMMENTS_FAILURE', () => {
+    const prevState = getCommentsReducer(undefined, getCommentsRequest());
     const error = 'Something went wrong';
-    const action = fetchCommentsFailure(error);
+    const action = getCommentsFailure(error);
     const newState = getCommentsReducer(prevState, action);
     expect(newState.loading).to.be.false;
     expect(newState.error).to.eql(error);

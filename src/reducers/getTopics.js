@@ -8,19 +8,19 @@ export const initialState = {
 
 export default (prevState = initialState, action) => {
   switch (action.type) {
-  case types.FETCH_TOPICS_REQUEST:
+  case types.GET_TOPICS_REQUEST:
     return Object.assign({}, prevState, {
       loading: !prevState.loading,
       error: null,
       data: []
     });
-  case types.FETCH_TOPICS_SUCCESS:
+  case types.GET_TOPICS_SUCCESS:
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
       data: action.payload
     });
-  case types.FETCH_TOPICS_FAILURE:
+  case types.GET_TOPICS_FAILURE:
     return Object.assign({}, prevState , {
       loading: false,
       error: action.payload,

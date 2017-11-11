@@ -1,9 +1,9 @@
 import {expect} from 'chai';
 import getArticlesByTopicReducer, {initialState} from '../src/reducers/getArticlesByTopic';
 import {
-  fetchArticlesByTopicFailure,
-  fetchArticlesByTopicRequest,
-  fetchArticlesByTopicSuccess
+  getArticlesByTopicFailure,
+  getArticlesByTopicRequest,
+  getArticlesByTopicSuccess
 } from '../src/actions/getArticlesByTopic';
 
 describe('getArticlesByTopic reducer', () => {
@@ -20,26 +20,26 @@ describe('getArticlesByTopic reducer', () => {
       expect(newState).to.equal(initialState);
     });
   });
-  it('handles FETCH_ARTICLES_BY_TOPIC_REQUEST', () => {
-    const action = fetchArticlesByTopicRequest(topic);
+  it('handles GET_ARTICLES_BY_TOPIC_REQUEST', () => {
+    const action = getArticlesByTopicRequest(topic);
     const newState =getArticlesByTopicReducer(undefined, action);
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
-  it('handles FETCH_ARTICLES_BY_TOPIC_SUCCESS', () => {
-    const prevState =getArticlesByTopicReducer(undefined, fetchArticlesByTopicRequest(topic));
+  it('handles GET_ARTICLES_BY_TOPIC_SUCCESS', () => {
+    const prevState =getArticlesByTopicReducer(undefined, getArticlesByTopicRequest(topic));
     const data = [1,2,3];
-    const action = fetchArticlesByTopicSuccess(data);
+    const action = getArticlesByTopicSuccess(data);
     const newState =getArticlesByTopicReducer(prevState, action);
     expect(newState.loading).to.be.false;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
   });
-  it('handles FETCH_ARTICLES_BY_TOPIC_FAILURE', () => {
-    const prevState =getArticlesByTopicReducer(undefined, fetchArticlesByTopicRequest());
+  it('handles GET_ARTICLES_BY_TOPIC_FAILURE', () => {
+    const prevState =getArticlesByTopicReducer(undefined, getArticlesByTopicRequest());
     const error = 'Something went wrong';
-    const action = fetchArticlesByTopicFailure(error);
+    const action = getArticlesByTopicFailure(error);
     const newState =getArticlesByTopicReducer(prevState,action);
     expect(newState.loading).to.be.false;
     expect(newState.error).to.eql(error);

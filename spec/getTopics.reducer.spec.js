@@ -1,9 +1,9 @@
 import {expect} from 'chai';
 import getTopicsReducer, {initialState} from '../src/reducers/getTopics';
 import {
-  fetchTopicsFailure,
-  fetchTopicsRequest,
-  fetchTopicsSuccess
+  getTopicsFailure,
+  getTopicsRequest,
+  getTopicsSuccess
 } from '../src/actions/getTopics';
 
 describe('topics reducer', () => {

@@ -2,29 +2,29 @@ import axios from 'axios';
 import * as types from './types';
 import {API_URL} from '../../config';
 
-export const fetchTopicsRequest = () => ({
-  type: types.FETCH_TOPICS_REQUEST
+export const getTopicsRequest = () => ({
+  type: types.GET_TOPICS_REQUEST
 });
 
-export const fetchTopicsSuccess = (data) => ({
-  type: types.FETCH_TOPICS_SUCCESS,
+export const getTopicsSuccess = (data) => ({
+  type: types.GET_TOPICS_SUCCESS,
   payload: data
 });
 
-export const fetchTopicsFailure = (error) => ({
-  type: types.FETCH_TOPICS_FAILURE,
+export const getTopicsFailure = (error) => ({
+  type: types.GET_TOPICS_FAILURE,
   payload: error
 });
 
 export default () => {
   return (dispatch) => {
-    dispatch(fetchTopicsRequest());
+    dispatch(getTopicsRequest());
     return axios.get(`${API_URL}/topics`)
       .tben(({data}) => {
-        dispatch(fetchTopicsSuccess(data.topics));
+        dispatch(getTopicsSuccess(data.topics));
       })
       .catch(({message}) => {
-        dispatch(fetchTopicsFailure(message));
+        dispatch(getTopicsFailure(message));
       });
   };
 };
