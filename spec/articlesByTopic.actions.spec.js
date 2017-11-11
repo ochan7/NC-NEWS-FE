@@ -11,7 +11,7 @@ import {API_URL} from '../config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe.only('async action creators', () => {
+describe('async action creators', () => {
   afterEach(() => {
     nock.cleanAll();
   });
