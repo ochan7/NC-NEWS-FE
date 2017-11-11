@@ -28,4 +28,13 @@ describe('getUser reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
+  it('handles GET_USER_SUCCESS', () => {
+    const prevState = getUserReducer(undefined, getUserRequest(username));
+    const data = [1];
+    const action = getUserSuccess(data);
+    const newState = getUserReducer(prevState, action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.be.null;
+    expect(newState.data).to.eql(data);
+  });
 });
