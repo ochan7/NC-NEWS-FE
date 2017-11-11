@@ -11,7 +11,7 @@ import {API_URL} from '../config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe.only('postComment', () => {
+describe('postComment', () => {
 
   afterEach(() => {
     nock.cleanAll();
@@ -58,6 +58,5 @@ describe.only('postComment', () => {
       .then(() => {
         expect(store.getActions()).to.eql(expectedActions);
       });
-
   });
 });
