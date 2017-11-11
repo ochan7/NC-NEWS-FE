@@ -29,4 +29,21 @@ describe.only('getTopics', () => {
         expect(store.getActions()).to.eql(expectedActions);
       });
   });
+  it('dispatched GET_TOPICS_FAILURE when getting topics responds with an error', () => {
+    nock(API_URL)
+      .get('/topics')
+      .replyWithError({'message': 'error'});
+
+    const expectedActions = [
+      getTopicsRequest(),
+      getTopicsFailure('error')
+    ];
+
+    const store = mockStore();
+
+    return store.dispatch(getTopics())
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
+      });
+  });
 });
