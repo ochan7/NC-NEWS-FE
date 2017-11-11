@@ -21,4 +21,11 @@ describe('getUser reducer', () => {
       expect(newState).to.equal(initialState);
     });
   });
+  it('handles GET_USER_REQUEST', () => {
+    const action = getUserRequest(username);
+    const newState = getUserReducer(undefined, action);
+    expect(newState.loading).to.be.true;
+    expect(newState.error).to.be.null;
+    expect(newState.data).to.eql([]);
+  });
 });
