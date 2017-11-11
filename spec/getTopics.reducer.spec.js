@@ -26,7 +26,7 @@ describe.only('topics reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
-  it('handles GET_ARTICLES_SUCCESS', () => {
+  it('handles GET_TOPICS_SUCCESS', () => {
     const prevState = getTopicsReducer(undefined, getTopicsRequest());
     const data = [1, 2, 3];
     const action = getTopicsSuccess(data);
@@ -34,5 +34,14 @@ describe.only('topics reducer', () => {
     expect(newState.loading).to.be.false;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql(data);
+  });
+  it('handles GET_TOPICS_FAILURE', () => {
+    const prevState = getTopicsReducer(undefined, getTopicsRequest());
+    const error = 'Something went wrong';
+    const action = getTopicsFailure(error);
+    const newState = getTopicsReducer(prevState, action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.eql(error);
+    expect(newState.data).to.eql([]);
   });
 });
