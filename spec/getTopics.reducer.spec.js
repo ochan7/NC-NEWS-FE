@@ -6,7 +6,7 @@ import {
   getTopicsSuccess
 } from '../src/actions/getTopics';
 
-describe('topics reducer', () => {
+describe.only('topics reducer', () => {
   describe('default behaviour', () => {
     it('returns the passed previous state if an unrecognised action is passed', () => {
       const action = {type: 'whatever'};
@@ -18,5 +18,21 @@ describe('topics reducer', () => {
       const newState = getTopicsReducer(undefined, action);
       expect(newState).to.equal(initialState);
     });
+  });
+  it('handles GET_TOPICS_REQUEST', () => {
+    const action = getTopicsRequest();
+    const newState = getTopicsReducer(undefined, action);
+    expect(newState.loading).to.be.true;
+    expect(newState.error).to.be.null;
+    expect(newState.data).to.eql([]);
+  });
+  it('handles GET_ARTICLES_SUCCESS', () => {
+    const prevState = getTopicsReducer(undefined, getTopicsRequest());
+    const data = [1, 2, 3];
+    const action = getTopicsSuccess(data);
+    const newState = getTopicsReducer(prevState, action);
+    expect(newState.loading).to.be.false;
+    expect(newState.error).to.be.null;
+    expect(newState.data).to.eql(data);
   });
 });
