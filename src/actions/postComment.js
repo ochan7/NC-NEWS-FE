@@ -16,7 +16,7 @@ export const postCommentSuccess = (data) => ({
 });
 
 export const postCommentFailure = (error) => ({
-  type: types.POST_COMMENT_FAILUREm,
+  type: types.POST_COMMENT_FAILURE,
   payload: error
 });
 
