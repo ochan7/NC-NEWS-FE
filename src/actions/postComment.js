@@ -23,8 +23,8 @@ export const postCommentFailure = (error) => ({
 export default (article_id, comment) => {
   return (dispatch) => {
     dispatch(postCommentRequest(article_id, comment));
-    return axios.post(`${API_URL}/articles/${article_id}/comments`)
-      .send({
+    return axios.post(`${API_URL}/articles/${article_id}/comments`,
+      {
         comment
       })
       .then(({data}) => {

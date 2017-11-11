@@ -11,7 +11,7 @@ import {API_URL} from '../config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe.only('getTopics', () => {
+describe('getTopics', () => {
   it('dispatches GET_TOPICS_SUCCESS when getting topics responds with 200 and data', () => {
     nock(API_URL)
       .get('/topics')
