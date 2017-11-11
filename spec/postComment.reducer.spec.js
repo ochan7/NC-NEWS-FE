@@ -38,7 +38,7 @@ describe('postComment reducer', () => {
     expect(newState.data).to.eql(data);
   });
   it('handles the POST_COMMENT_FAILURE', () => {
-    const prevState = postCommentReducer(undefined, postCommentFailure());
+    const prevState = postCommentReducer(undefined, postCommentRequest());
     const error = 'Something went wrong';
     const action = postCommentFailure(error);
     const newState = postCommentReducer(prevState, action);
