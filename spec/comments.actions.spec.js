@@ -4,7 +4,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import fetchComments, {
-  fetchCommentsFailure, fetchCommentsRequest, fetchCommentsSuccess
+  fetchCommentsRequest, fetchCommentsSuccess
 } from '../src/actions/comments';
 
 import {API_URL} from '../config';
