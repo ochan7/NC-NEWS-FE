@@ -37,10 +37,28 @@ describe('getUser', () => {
 
     return store.dispatch(getUser(username))
       .then(() => {
-        console.log(store.getActions());
         expect(store.getActions()).to.eql(expectedActions);
       });
 
+  });
+  it('dispatched GET_USER_FAILURE when getting user and responds with an error', () => {
+    const wrong_username = 'adsfasdf';
+    const error = 'USERNAME NOT FOUND';
+    nock(API_URL)
+      .get(`/users/${wrong_username}`)
+      .replyWithError({'message': error});
+    
+    const expectedActions = [
+      getUserRequest(wrong_username),
+      getUserFailure(error)
+    ];
+
+    const store = mockStore();
+    
+    return store.dispatch(getUser(wrong_username))
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
+      });
   });
 });
 
