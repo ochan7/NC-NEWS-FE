@@ -4,6 +4,7 @@ import HomePage from '../containers/HomePage/index';
 import { BrowserRouter } from 'react-router-dom';
 import NoMatch from './NoMatch';
 import Comments from '../containers/Comments/index';
+import Navbar from './Navbar';
 import './App.css';
 class App extends Component {
 
@@ -12,6 +13,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <h1>Northcoders News</h1>
+          <Navbar/>
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path ='/articles/:article_id/comments' component={Comments}/>
