@@ -1,16 +1,26 @@
 import React from 'react';
 import PT from 'prop-types';
 import {connect} from 'react-redux';
-import getArticles from '../actions/getArticles';
+import {Redirect} from 'react-router-dom';
+import getArticles from '../../actions/getArticles';
+
+import Loading from '../../components/Loading';
+import HomePageUI from '../../components/HomePageUI';
 
 class HomePage extends React.Component {
   componentDidMount(){
     this.props.getArticles();
   }
   render () {
+    const {articles, loading, error} = this.props;
     return (
       <div>
-        this is the homepage
+        {
+          error && <Redirect to = '/404'/>
+        }
+        {
+          loading ? <Loading/> : <HomePageUI articles={articles}/>
+        }
       </div>
     );
   }
