@@ -6,8 +6,22 @@ import getArticles from '../../actions/getArticles';
 
 import Loading from '../../components/Loading';
 import HomePageUI from '../../components/HomePageUI';
-
+import Paginator from '../../components/Paginator';
 class HomePage extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      page: 0,
+      pageSize: 10
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e){
+    const newPage = +e.target.innerHTML - 1;
+    this.setState({
+      page: newPage
+    });
+  }
   componentDidMount(){
     this.props.getArticles();
   }
@@ -19,7 +33,16 @@ class HomePage extends React.Component {
           error && <Redirect to = '/404'/>
         }
         {
-          loading ? <Loading/> : <HomePageUI articles={articles}/>
+          loading ? <Loading/> :
+            <div>
+              <HomePageUI 
+                articles={
+                  articles.slice(
+                    this.state.page * this.state.pageSize,
+                    this.state.page * this.state.pageSize + this.state.pageSize
+                  )}/>
+              <Paginator size={articles.length} handleClick={this.handleClick} pageSize={this.state.pageSize}/>
+            </div>
         }
       </div>
     );

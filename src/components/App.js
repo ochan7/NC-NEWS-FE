@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <h1>this is the app component</h1>
+          <h1>Northcoders News</h1>
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route path = '/404' component = {NoMatch}/>
