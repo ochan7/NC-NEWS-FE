@@ -2,16 +2,30 @@ import React, {Component} from 'react';
 import PT from 'prop-types';
 import {connect} from 'react-redux';
 import getComments from '../../actions/getComments';
-
+import CommentsUI from '../../components/CommentsUI';
+import Loading from '../../components/Loading';
+import {Redirect} from 'react-router-dom';
 class Comments extends Component {
   componentDidMount(){
     const article_id = this.props.location.state._id;
     this.props.getComments(article_id);
   }
   render () {
+    const {comments, loading, error} = this.props;
     return (
       <div>
-        put the comments here
+        {
+          error && <Redirect to = '/404'/>
+        }
+        {
+          loading ? <Loading/> :
+            <div>
+              <CommentsUI
+                article = {this.props.location.state}
+                comments = {this.props.comments}
+              />
+            </div>
+        }
       </div>
     );
   }
