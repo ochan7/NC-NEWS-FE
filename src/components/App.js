@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import NoMatch from './NoMatch';
 import Comments from '../containers/Comments/index';
 import Navbar from './Navbar';
+import TopicalArticles from '../containers/TopicalArticles/index';
 import './App.css';
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
           <Navbar/>
           <Switch>
             <Route exact path='/' component={HomePage} />
+            <Route exact path='/topics/:topic/articles' component={TopicalArticles}/>
             <Route exact path ='/articles/:article_id/comments' component={Comments}/>
             <Route path = '/404' component = {NoMatch}/>
           </Switch>
