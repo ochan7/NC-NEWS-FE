@@ -22,7 +22,7 @@ class Comments extends Component {
             <div>
               <CommentsUI
                 article = {this.props.location.state}
-                comments = {this.props.comments}
+                comments = {comments}
               />
             </div>
         }
@@ -31,6 +31,7 @@ class Comments extends Component {
   }
 }
 Comments.propTypes = {
+  location: PT.object.isRequired,
   comments: PT.array.isRequired,
   loading: PT.bool.isRequired,
   error: PT.any,

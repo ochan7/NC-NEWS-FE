@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PT from 'prop-types';
 const CommentsUI = ({article, comments}) => (
   <div>
     <div>
@@ -18,4 +18,8 @@ const CommentsUI = ({article, comments}) => (
   </div>
 );
 
+CommentsUI.propTypes = {
+  article: PT.object.isRequired,
+  comments: PT.array.isRequired
+};
 export default CommentsUI;

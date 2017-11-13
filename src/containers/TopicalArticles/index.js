@@ -37,6 +37,7 @@ class TopicalArtcles extends React.Component {
 }
 
 TopicalArtcles.propTypes = {
+  match: PT.object.isRequired,
   articles: PT.array.isRequired,
   loading: PT.bool.isRequired,
   error: PT.any,
