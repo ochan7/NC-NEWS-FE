@@ -5,6 +5,7 @@ import getComments from '../../actions/getComments';
 import CommentsUI from '../../components/CommentsUI';
 import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
+import Article from '../Article/index';
 class Comments extends Component {
   componentDidMount(){
     const article_id = this.props.location.state._id;
@@ -14,6 +15,7 @@ class Comments extends Component {
     const {comments, loading, error} = this.props;
     return (
       <div>
+        <Article article ={this.props.location.state}/>
         {
           error && <Redirect to = '/404'/>
         }
