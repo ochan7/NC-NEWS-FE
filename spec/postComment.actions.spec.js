@@ -30,7 +30,7 @@ describe('postComment', () => {
 
     const expectedActions = [
       postCommentRequest(article_id, comment),
-      postCommentSuccess({body: comment, created_by: 'northcoder'})
+      postCommentSuccess([{body: comment, created_by: 'northcoder'}])
     ];
 
     const store = mockStore();

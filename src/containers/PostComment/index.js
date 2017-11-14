@@ -20,6 +20,9 @@ class PostComment extends Component {
     });
   }
   handleSubmit(){
+    const {_id: article_id} = this.props.article;
+    const {input: comment} = this.state;
+    this.props.postComment(article_id, comment);
     this.setState({
       input: ''
     });
@@ -38,7 +41,7 @@ class PostComment extends Component {
   }
 }
 PostComment.propTypes = {
-  article: PT.array.isRequired,
+  article: PT.object.isRequired,
   postComment: PT.func.isRequired,
 };
 

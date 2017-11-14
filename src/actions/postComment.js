@@ -28,7 +28,7 @@ export default (article_id, comment) => {
         comment
       })
       .then(({data}) => {
-        dispatch(postCommentSuccess(data.comment));
+        dispatch(postCommentSuccess([data.comment]));
       })
       .catch(error => {
         dispatch(postCommentFailure(error.message));
