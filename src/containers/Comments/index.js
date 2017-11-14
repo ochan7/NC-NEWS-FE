@@ -6,6 +6,7 @@ import CommentsUI from '../../components/CommentsUI';
 import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
+import PostComment from '../PostComment/index';
 class Comments extends Component {
   componentDidMount(){
     const article_id = this.props.location.state._id;
@@ -16,6 +17,7 @@ class Comments extends Component {
     return (
       <div>
         <Article article ={this.props.location.state}/>
+        <PostComment/>
         {
           error && <Redirect to = '/404'/>
         }
