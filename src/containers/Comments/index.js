@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PT from 'prop-types';
 import {connect} from 'react-redux';
 import getComments from '../../actions/getComments';
+// import postComment from '../../actions/postComment';
 import CommentsUI from '../../components/CommentsUI';
 import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
@@ -14,10 +15,11 @@ class Comments extends Component {
   }
   render () {
     const {comments, loading, error} = this.props;
+    const {state: article} = this.props.location;
     return (
       <div>
-        <Article article ={this.props.location.state}/>
-        <PostComment/>
+        <Article article ={article}/>
+        <PostComment article ={article}/>
         {
           error && <Redirect to = '/404'/>
         }
@@ -25,7 +27,7 @@ class Comments extends Component {
           loading ? <Loading/> :
             <div>
               <CommentsUI
-                article = {this.props.location.state}
+                article = {article}
                 comments = {comments}
               />
             </div>
@@ -44,10 +46,14 @@ Comments.propTypes = {
 
 const mapStateToProps = state => {
   const {data, loading, error} = state.getComments;
+  const {data: newPost, loading: loadingNewPost, error: newPostError} = state.postComment;
   return {
     comments: data,
     loading,
-    error
+    error,
+    newPost,
+    loadingNewPost,
+    newPostError
   };
 };
 const mapDispatchToProps = dispatch => ({
