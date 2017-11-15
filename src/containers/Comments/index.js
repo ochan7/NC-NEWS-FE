@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PT from 'prop-types';
 import {connect} from 'react-redux';
 import getComments from '../../actions/getComments';
-import CommentsUI from '../../components/CommentsUI';
+import Comment from '../Comment/index';
 import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
@@ -46,12 +46,12 @@ class Comments extends Component {
           loading ? <Loading/> :
             <div>
               {loadingNewPost && <Loading/>}
-              <CommentsUI
-                article = {article}
-                comments = {
-                  [...this.state.comments,...comments]
-                }
-              />
+              {
+                [...this.state.comments,...comments].map(comment =>(
+                  <Comment  key = {comment._id} comment = {comment}/>
+                ))
+              }
+         
             </div>
         }
       </div>
