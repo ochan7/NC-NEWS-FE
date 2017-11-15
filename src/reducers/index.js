@@ -9,10 +9,11 @@ import postComment from './postComment';
 import getUser from './getUser';
 import putArticle from './putArticle';
 import putComment from './putComment';
-
+import getArticle from './getArticle';
 const reducer = combineReducers({
   test, 
   getArticles, 
+  getArticle,
   getArticlesByTopic, 
   getComments, 
   getTopics, 

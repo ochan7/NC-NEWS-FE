@@ -17,7 +17,7 @@ class Votes extends Component {
     return () => putArticle(article_id, vote);
   }
   componentWillReceiveProps(nextProps){
-    if(this.props.article.votes !== nextProps.votes){
+    if(typeof nextProps.votes === 'number'){
       this.setState({
         votes: nextProps.votes
       });

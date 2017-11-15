@@ -7,7 +7,6 @@ import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
 import PostComment from '../PostComment/index';
-import Votes from '../Votes/index';
 class Comments extends Component {
   constructor (props) {
     super(props);
@@ -34,10 +33,7 @@ class Comments extends Component {
     return (
       <div>
         <Article 
-          article ={article}
-        />
-        <Votes 
-          article={article}
+          article_id ={article._id}
         />
         <PostComment 
           article ={article}
