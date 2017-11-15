@@ -7,6 +7,7 @@ import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
 import PostComment from '../PostComment/index';
+import Votes from '../Votes/index';
 class Comments extends Component {
   constructor (props) {
     super(props);
@@ -32,8 +33,15 @@ class Comments extends Component {
     const {state: article} = this.props.location;
     return (
       <div>
-        <Article article ={article}/>
-        <PostComment article ={article}/>
+        <Article 
+          article ={article}
+        />
+        <Votes 
+          article={article}
+        />
+        <PostComment 
+          article ={article}
+        />
         <h3>Comments</h3>
         {
           error && <Redirect to = '/404'/>
@@ -58,7 +66,7 @@ Comments.propTypes = {
   location: PT.object.isRequired,
   comments: PT.array.isRequired,
   loading: PT.bool.isRequired,
-  error: PT.any,
+  error: PT.any.isRequired,
   getComments: PT.func.isRequired,
   newPost: PT.array.isRequired,
   loadingNewPost: PT.bool.isRequired,

@@ -5,7 +5,6 @@ const ArticleUI = ({article}) => (
     <h2>{article.title}</h2>
     <h5>Author {article.created_by}</h5>
     <p>{article.body}</p>
-    <h5>Popularity {article.votes}</h5>
   </div>
 );
 
