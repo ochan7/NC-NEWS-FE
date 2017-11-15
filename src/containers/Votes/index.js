@@ -16,7 +16,6 @@ class Votes extends Component {
   }
   componentWillReceiveProps(nextProps){
     if(typeof nextProps.votes === 'number'){
-      console.log(nextProps.votes);
       this.setState({
         votes: nextProps.votes
       });
