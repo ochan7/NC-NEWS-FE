@@ -10,6 +10,7 @@ import getUser from './getUser';
 import putArticle from './putArticle';
 import putComment from './putComment';
 import getArticle from './getArticle';
+import deleteComment from './deleteComment';
 const reducer = combineReducers({
   test, 
   getArticles, 
@@ -20,7 +21,8 @@ const reducer = combineReducers({
   postComment, 
   getUser,
   putArticle,
-  putComment
+  putComment,
+  deleteComment
 });
 
 export default reducer;
