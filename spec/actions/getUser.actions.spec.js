@@ -2,12 +2,12 @@ import {expect} from 'chai';
 import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {API_URL} from '../config';
+import {API_URL} from '../../config';
 const mockStore = configureMockStore([thunk]);
 
 import getUser, {
   getUserFailure, getUserRequest, getUserSuccess
-} from '../src/actions/getUser';
+} from '../../src/actions/getUser';
 
 describe('getUser', () => {
   afterEach(() => {

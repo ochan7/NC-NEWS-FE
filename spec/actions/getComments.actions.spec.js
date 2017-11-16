@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 
 import getComments, {
   getCommentsRequest, getCommentsSuccess, getCommentsFailure
-} from '../src/actions/getComments';
+} from '../../src/actions/getComments';
 
-import {API_URL} from '../config';
+import {API_URL} from '../../config';
 
 const mockStore = configureMockStore([thunk]);
 

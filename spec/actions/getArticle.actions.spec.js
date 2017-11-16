@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 
 import getArticle, {
   getArticleRequest, getArticleSuccess, getArticleFailure
-} from '../src/actions/getArticle';
+} from '../../src/actions/getArticle';
 
-import {API_URL} from '../config';
+import {API_URL} from '../../config';
 
 const mockStore = configureMockStore([thunk]);
 

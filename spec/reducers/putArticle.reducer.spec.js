@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import putArticleReducer, {initialState} from '../src/reducers/putArticle';
+import putArticleReducer, {initialState} from '../../src/reducers/putArticle';
 import {
   putArticleRequest,
   putArticleSuccess,
   putArticleFailure
-} from '../src/actions/putArticle';
+} from '../../src/actions/putArticle';
 
 describe('putArticle reducer', () => {
   const article_id = '5a033990e03644b9fab5289c';

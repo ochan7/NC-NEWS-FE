@@ -1,14 +1,14 @@
 import {expect} from 'chai';
-import deleteCommentReducer, {initialState} from '../src/reducers/deleteComment';
+import deleteCommentReducer, {initialState} from '../../src/reducers/deleteComment';
 import {
   deleteCommentFailure,
   deleteCommentRequest,
   deleteCommentSuccess
-} from '../src/actions/deleteComment';
+} from '../../src/actions/deleteComment';
 
 describe('deleteComment reducer', () => {
   const comment_id = '5a033992e03644b9fab528c0';
-  describe.only('default behaviour', () => {
+  describe('default behaviour', () => {
     it('returns the passed previous state if an unrecognised action is passed', () => {
       const action = {type: 'whatever'};
       const newState = deleteCommentReducer(initialState, action);

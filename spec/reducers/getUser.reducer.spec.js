@@ -1,11 +1,11 @@
 import {expect} from 'chai';
-import getUserReducer, {initialState} from '../src/reducers/getUser';
+import getUserReducer, {initialState} from '../../src/reducers/getUser';
 
 import {
   getUserFailure,
   getUserRequest,
   getUserSuccess
-} from '../src/actions/getUser';
+} from '../../src/actions/getUser';
 
 describe('getUser reducer', () => {
   const username = 'tickle122';

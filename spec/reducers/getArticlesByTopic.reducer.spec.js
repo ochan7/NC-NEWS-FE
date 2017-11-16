@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import getArticlesByTopicReducer, {initialState} from '../src/reducers/getArticlesByTopic';
+import getArticlesByTopicReducer, {initialState} from '../../src/reducers/getArticlesByTopic';
 import {
   getArticlesByTopicFailure,
   getArticlesByTopicRequest,
   getArticlesByTopicSuccess
-} from '../src/actions/getArticlesByTopic';
+} from '../../src/actions/getArticlesByTopic';
 
 describe('getArticlesByTopic reducer', () => {
   const topic = 'football';

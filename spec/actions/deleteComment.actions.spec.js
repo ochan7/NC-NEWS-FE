@@ -4,9 +4,9 @@ import configureMockStore from 'redux-mock-store';import thunk from 'redux-thunk
 
 import deleteComment, {
   deleteCommentRequest, deleteCommentSuccess, deleteCommentFailure
-} from '../src/actions/deleteComment';
+} from '../../src/actions/deleteComment';
 
-import {API_URL} from '../config';
+import {API_URL} from '../../config';
 
 const mockStore = configureMockStore([thunk]);
 

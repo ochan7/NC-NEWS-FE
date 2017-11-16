@@ -2,12 +2,12 @@ import {expect} from 'chai';
 import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {API_URL} from '../config';
+import {API_URL} from '../../config';
 const mockStore = configureMockStore([thunk]);
 
 import putArticle, {
   putArticleFailure, putArticleRequest, putArticleSuccess
-} from '../src/actions/putArticle';
+} from '../../src/actions/putArticle';
 
 describe('putArticle', () => {
   afterEach(() => {

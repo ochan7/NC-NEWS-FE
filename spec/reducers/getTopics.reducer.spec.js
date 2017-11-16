@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import getTopicsReducer, {initialState} from '../src/reducers/getTopics';
+import getTopicsReducer, {initialState} from '../../src/reducers/getTopics';
 import {
   getTopicsFailure,
   getTopicsRequest,
   getTopicsSuccess
-} from '../src/actions/getTopics';
+} from '../../src/actions/getTopics';
 
 describe('topics reducer', () => {
   describe('default behaviour', () => {

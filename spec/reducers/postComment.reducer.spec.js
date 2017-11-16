@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import postCommentReducer, {initialState} from '../src/reducers/postComment';
+import postCommentReducer, {initialState} from '../../src/reducers/postComment';
 import {
   postCommentFailure,
   postCommentRequest,
   postCommentSuccess
-} from '../src/actions/postComment';
+} from '../../src/actions/postComment';
 
 describe('postComment reducer', () => {
   const article_id = '5a033990e03644b9fab5289c';

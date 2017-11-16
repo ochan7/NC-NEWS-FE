@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import putCommentReducer, {initialState} from '../src/reducers/putComment';
+import putCommentReducer, {initialState} from '../../src/reducers/putComment';
 import {
   putCommentFailure,
   putCommentRequest,
   putCommentSuccess
-} from '../src/actions/putComment';
+} from '../../src/actions/putComment';
 
 describe('putComment reducer', () => {
   const comment_id = '5a033992e03644b9fab528c0';

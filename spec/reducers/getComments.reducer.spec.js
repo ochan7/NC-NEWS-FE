@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import getCommentsReducer, {initialState} from '../src/reducers/getComments';
+import getCommentsReducer, {initialState} from '../../src/reducers/getComments';
 import {
   getCommentsFailure,
   getCommentsRequest,
   getCommentsSuccess
-} from '../src/actions/getComments';
+} from '../../src/actions/getComments';
 
 describe('comments reducer', () => {
   const article_id = '5a033990e03644b9fab5289c';

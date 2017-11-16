@@ -2,12 +2,12 @@ import {expect} from 'chai';
 import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {API_URL} from '../config';
+import {API_URL} from '../../config';
 const mockStore = configureMockStore([thunk]);
 
 import putComment, {
   putCommentFailure, putCommentRequest, putCommentSuccess
-} from '../src/actions/putComment';
+} from '../../src/actions/putComment';
 
 describe('putComment', () => {
   afterEach(() => {

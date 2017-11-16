@@ -1,6 +1,6 @@
 import {expect} from 'chai';
-import testReducer from '../src/reducers/test';
-import * as actionCreators from '../src/actions';
+import testReducer from '../../src/reducers/test';
+import * as actionCreators from '../../src/actions';
 
 describe('reducer', () => {
   describe('default behaviour', () => {

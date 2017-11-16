@@ -1,10 +1,10 @@
 import {expect} from 'chai';
-import getArticlesReducer, {initialState} from '../src/reducers/getArticles';
+import getArticlesReducer, {initialState} from '../../src/reducers/getArticles';
 import {
   getArticlesRequest,
   getArticlesSuccess,
   getArticlesFailure
-} from '../src/actions/getArticles';
+} from '../../src/actions/getArticles';
 
 describe('articles reducer', () => {
   describe('default behaviour', () => {
