@@ -11,7 +11,7 @@ class HomePage extends React.Component {
   constructor (props) {
     super(props);
     const {params} = this.props.match;
-    let page;
+    let page = 0;
     params.page !== undefined ? page = params.page - 1 : page  = 0;
     this.state = {
       page:  page,
@@ -45,7 +45,11 @@ class HomePage extends React.Component {
                     this.state.page * this.state.pageSize,
                     this.state.page * this.state.pageSize + this.state.pageSize
                   )}/>
-              <Paginator size={articles.length}  pageSize={this.state.pageSize}/>
+              <Paginator 
+                size={articles.length}  
+                pageSize={this.state.pageSize}
+                path = '/home/'
+              />
             </div>
         }
       </div>

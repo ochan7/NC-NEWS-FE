@@ -18,6 +18,7 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route exact path='/home/:page' component={HomePage} />
           <Route exact path='/topics/:topic/articles' component={TopicalArticles}/>
+          <Route exact path='/topics/:topic/articles/:page' component={TopicalArticles}/>
           <Route exact path='/user/:username' component={User}/>
           <Route exact path ='/articles/:article_id/comments' component={Comments}/>
           <Route exact path = '/404' component = {NoMatch}/>

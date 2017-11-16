@@ -9,32 +9,34 @@ import HomePageUI from '../../components/HomePageUI';
 class TopicalArtcles extends React.Component {
   constructor (props) {
     super(props);
+    const {params} = this.props.match;
+    let page = 0;
+    params.page !== undefined ? page = params.page - 1 : page  = 0;
     this.state = {
-      page: 0,
+      page:  page,
       pageSize: 10
     };
-    this.handleClick = this.handleClick.bind(this);
   }
-  handleClick(e){
-    const newPage = +e.target.innerHTML - 1;
-    this.setState({
-      page: newPage
-    });
-  }
-  componentDidMount(){
+  componentWillMount(){
     const topic = this.props.match.params.topic;
     this.props.getArticlesByTopic(topic);
   }
-  componentWillReceiveProps(nextProps) { 
-    if (this.props.match.params.topic !== nextProps.match.params.topic) {
-      this.props.getArticlesByTopic(nextProps.match.params.topic);
+  componentWillReceiveProps(nextProps){
+    const {page, topic} = nextProps.match.params;
+    if(this.props.match.params.page !== page) {
+      this.setState({
+        page: page - 1
+      });
+    }
+    if (this.props.match.params.topic !== topic) {
+      this.props.getArticlesByTopic(topic);
       this.setState({
         page: 0
       });
     }
   }
   render () {
-    const {articles, loading, error} = this.props;
+    const {articles, loading, error, match : {params: {topic}}} = this.props;
     return (
       <div>
         {
@@ -49,7 +51,11 @@ class TopicalArtcles extends React.Component {
                     this.state.page * this.state.pageSize,
                     this.state.page * this.state.pageSize + this.state.pageSize
                   )}/>
-              <Paginator size={articles.length} handleClick={this.handleClick} pageSize={this.state.pageSize}/>
+              <Paginator 
+                size={articles.length}
+                pageSize={this.state.pageSize}
+                path = {`/topics/${topic}/articles/`}
+              />
             </div>
         }
       </div>
