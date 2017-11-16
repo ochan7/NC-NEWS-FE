@@ -6,6 +6,7 @@ import Comments from '../containers/Comments/index';
 import Navbar from './Navbar';
 import TopicalArticles from '../containers/TopicalArticles/index';
 import './App.css';
+import User from '../containers/User/index';
 class App extends Component {
 
   render () {
@@ -16,6 +17,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/topics/:topic/articles' component={TopicalArticles}/>
+          <Route exact path='/user/:username' component={User}/>
           <Route exact path ='/articles/:article_id/comments' component={Comments}/>
           <Route path = '/404' component = {NoMatch}/>
         </Switch>
