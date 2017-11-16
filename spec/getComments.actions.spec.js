@@ -4,7 +4,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import getComments, {
-  getCommentsRequest, getCommentsSuccess
+  getCommentsRequest, getCommentsSuccess, getCommentsFailure
 } from '../src/actions/getComments';
 
 import {API_URL} from '../config';
@@ -30,6 +30,23 @@ describe('async action creators', () => {
       const store = mockStore();
 
       return store.dispatch(getComments(article_id))
+        .then(() => {
+          expect(store.getActions()).to.eql(expectedActions);
+        });
+    });
+    it('dispatches GET_COMMENTS_FAILURE when getting comments by invalid article_id and 404', () => {
+      const wrong_id = 'adsfasdasfd';
+      const error = 'Page not found';
+      nock(API_URL)
+        .get(`/articles/${wrong_id}/comments`)
+        .replyWithError({message: error});
+      const expectedActions = [
+        getCommentsRequest(wrong_id),
+        getCommentsFailure(error)
+      ];
+
+      const store = mockStore();
+      return store.dispatch(getComments(wrong_id))
         .then(() => {
           expect(store.getActions()).to.eql(expectedActions);
         });
