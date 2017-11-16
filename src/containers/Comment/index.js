@@ -41,18 +41,17 @@ class Comment extends Component {
     });
   }
   render() {
-    const {comment} = this.props;
+    const {comment, isDeleteAble} = this.props;
     const{deleted} = this.state;
     return (
       <div>
-        {
-          !deleted?
-            <div>
-              <CommentUI comment={comment}/>
-              <FlatButton label = 'delete' onClick = {this.handleIsDeleted}/>
-              <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
-            </div>
-            : <span/>
+        {!deleted?
+          <div>
+            <CommentUI comment={comment}/>
+            {isDeleteAble && <FlatButton label = 'delete' onClick = {this.handleIsDeleted}/>}
+            <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
+          </div>
+          :<span/>
         }
       </div>
     );
@@ -68,7 +67,8 @@ const mapDispatchToProps = dispatch => ({
 Comment.propTypes = {
   comment: PT.object.isRequired,
   putComment: PT.func.isRequired,
-  handleDelete: PT.func.isRequired
+  handleDelete: PT.func.isRequired,
+  isDeleteAble: PT.bool.isRequired
 };
 export default connect(null, mapDispatchToProps)(Comment);
 // export default Comment;

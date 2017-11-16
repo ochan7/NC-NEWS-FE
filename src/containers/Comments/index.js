@@ -56,7 +56,12 @@ class Comments extends Component {
               {loadingNewPost && <Loading/>}
               {
                 [...this.state.comments,...comments].map((comment, index) =>(
-                  <Comment  key = {index} comment = {comment} handleDelete = {this.handleDelete(comment._id)}/>
+                  <Comment  
+                    key = {index} 
+                    comment = {comment}
+                    isDeleteAble = {comment.created_by === 'northcoder'}
+                    handleDelete = {this.handleDelete(comment._id)}
+                  />
                 ))
               }
          
