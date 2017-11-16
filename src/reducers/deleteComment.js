@@ -1,7 +1,6 @@
 import * as types from '../actions/types';
-import { initialState } from './deleteComment';
 
-export const inititalState = {
+export const initialState = {
   loading: false,
   error: null,
   data: []
