@@ -7,12 +7,14 @@ import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
 import PostComment from '../PostComment/index';
+import deleteComment from '../../actions/deleteComment';
 class Comments extends Component {
   constructor (props) {
     super(props);
     this.state = {
       comments: []
     };
+    this.handleDelete = this.handleDelete.bind(this);
   }
   componentDidMount(){
     const article_id = this.props.location.state._id;
@@ -26,6 +28,12 @@ class Comments extends Component {
         comments: [...newPost, ...prevComment]
       });
     }
+  }
+  handleDelete(comment_id){
+    const {deleteComment} = this.props;
+    return () => {
+      deleteComment(comment_id);
+    };
   }
   render () {
     const {comments, loading, error, loadingNewPost} = this.props;
@@ -47,8 +55,8 @@ class Comments extends Component {
             <div>
               {loadingNewPost && <Loading/>}
               {
-                [...this.state.comments,...comments].map(comment =>(
-                  <Comment  key = {comment._id} comment = {comment}/>
+                [...this.state.comments,...comments].map((comment, index) =>(
+                  <Comment  key = {index} comment = {comment} handleDelete = {this.handleDelete(comment._id)}/>
                 ))
               }
          
@@ -66,24 +74,30 @@ Comments.propTypes = {
   getComments: PT.func.isRequired,
   newPost: PT.array.isRequired,
   loadingNewPost: PT.bool.isRequired,
-  newPostError: PT.any.isRequired
+  newPostError: PT.any.isRequired,
+  deleteComment: PT.func.isRequired
 };
 
 const mapStateToProps = state => {
   const {data, loading, error} = state.getComments;
   const {data: newPost, loading: loadingNewPost, error: newPostError} = state.postComment;
+  const {data:deleteData} = state.deleteComment;
   return {
     comments: data,
     loading,
     error,
     newPost,
     loadingNewPost,
-    newPostError
+    newPostError,
+    deleteData
   };
 };
 const mapDispatchToProps = dispatch => ({
   getComments: (article_id) => {
     dispatch(getComments(article_id));
-  } 
+  },
+  deleteComment: (comment_id) => {
+    dispatch(deleteComment(comment_id));
+  }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);

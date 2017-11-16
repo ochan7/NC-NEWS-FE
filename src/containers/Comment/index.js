@@ -4,13 +4,20 @@ import CommentUI from '../../components/CommentUI';
 import {connect} from 'react-redux';
 import putComment from '../../actions/putComment';
 import VotesUI from '../../components/VotesUI';
+import FlatButton from 'material-ui/FlatButton';
 class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      votes: this.props.comment.votes
+      votes: this.props.comment.votes,
+      deleted: false
     };
     this.handleClick = this.handleClick.bind(this);
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      votes: nextProps.comment.votes
+    });
   }
   handleClick(value){
     const {_id: id} = this.props.comment;
@@ -31,7 +38,9 @@ class Comment extends Component {
     return (
       <div>
         <CommentUI comment={comment}/>
+        <FlatButton label = 'delete' onClick = {this.props.handleDelete}/>
         <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
+
       </div>
     );
   }
@@ -45,7 +54,8 @@ const mapDispatchToProps = dispatch => ({
 
 Comment.propTypes = {
   comment: PT.object.isRequired,
-  putComment: PT.func.isRequired
+  putComment: PT.func.isRequired,
+  handleDelete: PT.func.isRequired
 };
 export default connect(null, mapDispatchToProps)(Comment);
 // export default Comment;
