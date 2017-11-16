@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import putComment from '../../actions/putComment';
 import VotesUI from '../../components/VotesUI';
 import FlatButton from 'material-ui/FlatButton';
+
 class Comment extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ class Comment extends Component {
       deleted: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleIsDeleted = this.handleIsDeleted.bind(this);
   }
   componentWillReceiveProps(nextProps){
     this.setState({
@@ -32,15 +34,26 @@ class Comment extends Component {
       });
     };
   }
+  handleIsDeleted(){
+    this.props.handleDelete();
+    this.setState({
+      deleted: true
+    });
+  }
   render() {
     const {comment} = this.props;
-
+    const{deleted} = this.state;
     return (
       <div>
-        <CommentUI comment={comment}/>
-        <FlatButton label = 'delete' onClick = {this.props.handleDelete}/>
-        <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
-
+        {
+          !deleted?
+            <div>
+              <CommentUI comment={comment}/>
+              <FlatButton label = 'delete' onClick = {this.handleIsDeleted}/>
+              <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
+            </div>
+            : <span/>
+        }
       </div>
     );
   }
