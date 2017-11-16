@@ -3,11 +3,24 @@ import PT from 'prop-types';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import getArticlesByTopic from '../../actions/getArticlesByTopic';
-
+import Paginator from '../../components/Paginator';
 import Loading from '../../components/Loading';
 import HomePageUI from '../../components/HomePageUI';
 class TopicalArtcles extends React.Component {
-
+  constructor (props) {
+    super(props);
+    this.state = {
+      page: 0,
+      pageSize: 10
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e){
+    const newPage = +e.target.innerHTML - 1;
+    this.setState({
+      page: newPage
+    });
+  }
   componentDidMount(){
     const topic = this.props.match.params.topic;
     this.props.getArticlesByTopic(topic);
@@ -15,6 +28,9 @@ class TopicalArtcles extends React.Component {
   componentWillReceiveProps(nextProps) { 
     if (this.props.match.params.topic !== nextProps.match.params.topic) {
       this.props.getArticlesByTopic(nextProps.match.params.topic);
+      this.setState({
+        page: 0
+      });
     }
   }
   render () {
@@ -28,7 +44,12 @@ class TopicalArtcles extends React.Component {
           loading ? <Loading/> :
             <div>
               <HomePageUI 
-                articles={articles}/>
+                articles={
+                  articles.slice(
+                    this.state.page * this.state.pageSize,
+                    this.state.page * this.state.pageSize + this.state.pageSize
+                  )}/>
+              <Paginator size={articles.length} handleClick={this.handleClick} pageSize={this.state.pageSize}/>
             </div>
         }
       </div>
