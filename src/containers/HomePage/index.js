@@ -10,20 +10,24 @@ import Paginator from '../../components/Paginator';
 class HomePage extends React.Component {
   constructor (props) {
     super(props);
+    const {params} = this.props.match;
+    let page;
+    params.page !== undefined ? page = params.page - 1 : page  = 0;
     this.state = {
-      page: 0,
+      page:  page,
       pageSize: 10
     };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick(e){
-    const newPage = +e.target.innerHTML - 1;
-    this.setState({
-      page: newPage
-    });
   }
   componentDidMount(){
     this.props.getArticles();
+  }
+  componentWillReceiveProps(nextProps){
+    const {page} = nextProps.match.params;
+    if(this.props.match.params.page !== page) {
+      this.setState({
+        page: page - 1
+      });
+    }
   }
   render () {
     const {articles, loading, error} = this.props;
@@ -41,7 +45,7 @@ class HomePage extends React.Component {
                     this.state.page * this.state.pageSize,
                     this.state.page * this.state.pageSize + this.state.pageSize
                   )}/>
-              <Paginator size={articles.length} handleClick={this.handleClick} pageSize={this.state.pageSize}/>
+              <Paginator size={articles.length}  pageSize={this.state.pageSize}/>
             </div>
         }
       </div>
@@ -50,6 +54,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
+  match: PT.object.isRequired,
   articles: PT.array.isRequired,
   loading: PT.bool.isRequired,
   error: PT.any,

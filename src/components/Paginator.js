@@ -1,16 +1,16 @@
 import React from 'react';
 import PT from 'prop-types';
-const Paginator = ({size, handleClick, pageSize}) => {
+import {Link} from 'react-router-dom';
+const Paginator = ({size, pageSize}) => {
 
   return (
     <div>
       {Array(Math.ceil(size / pageSize)).fill(0).map((butn, index) => (
-        <button 
+        <Link to = {`/home/${index+1}`} 
           key = {index}
-          onClick = {handleClick}
         >
           {index + 1}
-        </button>
+        </Link>
       ))}
     </div>
   );
@@ -18,7 +18,7 @@ const Paginator = ({size, handleClick, pageSize}) => {
 
 Paginator.propTypes = {
   size: PT.number.isRequired,
-  handleClick: PT.func.isRequired,
+
   pageSize: PT.number.isRequired
 };
 export default Paginator;
