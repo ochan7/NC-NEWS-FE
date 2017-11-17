@@ -4,7 +4,7 @@ import CommentUI from '../../components/CommentUI';
 import {connect} from 'react-redux';
 import putComment from '../../actions/putComment';
 import VotesUI from '../../components/VotesUI';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 
 class Comment extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class Comment extends Component {
         {!deleted?
           <div>
             <CommentUI comment={comment}/>
-            {isDeleteAble && <FlatButton label = 'delete' onClick = {this.handleIsDeleted}/>}
+            {isDeleteAble && <Button onClick = {this.handleIsDeleted}>DELETE</Button>}
             <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
           </div>
           :<span/>

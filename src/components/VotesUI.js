@@ -1,14 +1,15 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 import PT from 'prop-types';
 import Loading from '../components/Loading';
 
 const VotesUI = ({votes, loading, handleClick}) => (
   <div>
-    <FlatButton 
-      label='UP'
+    <Button
       onClick={handleClick('up')}
-    />
+    >
+    UP
+    </Button>
     {
       loading ? 
         <Loading/>:
@@ -16,10 +17,11 @@ const VotesUI = ({votes, loading, handleClick}) => (
           <span>{votes}</span>
         </div>
     }
-    <FlatButton 
-      label='DOWN'
+    <Button 
       onClick={handleClick('down')}
-    />
+    >
+    DOWN
+    </Button>
   </div>
 );
 
