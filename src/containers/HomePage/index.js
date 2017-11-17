@@ -31,6 +31,7 @@ class HomePage extends React.Component {
   }
   render () {
     const {articles, loading, error} = this.props;
+    const {page} = this.state;
     return (
       <div>
         {
@@ -43,6 +44,7 @@ class HomePage extends React.Component {
                 size={articles.length}  
                 pageSize={this.state.pageSize}
                 path = '/home/'
+                page = {page}
               />
               <HomePageUI 
                 articles={
@@ -54,6 +56,7 @@ class HomePage extends React.Component {
                 size={articles.length}  
                 pageSize={this.state.pageSize}
                 path = '/home/'
+                page = {page}
               />
             </div>
         }

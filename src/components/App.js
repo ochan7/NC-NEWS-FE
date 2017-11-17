@@ -27,6 +27,7 @@ class App extends Component {
           <Route exact path='/user/:username' component={User}/>
           <Route exact path ='/articles/:article_id/comments' component={Comments}/>
           <Route exact path = '/404' component = {NoMatch}/>
+          <Route path = '/*' component = {NoMatch}/>
         </Switch>
       </Grid>
     );

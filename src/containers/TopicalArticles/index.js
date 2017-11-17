@@ -37,6 +37,7 @@ class TopicalArtcles extends React.Component {
   }
   render () {
     const {articles, loading, error, match : {params: {topic}}} = this.props;
+    const {page} = this.state;
     return (
       <div>
         {
@@ -49,6 +50,7 @@ class TopicalArtcles extends React.Component {
                 size={articles.length}
                 pageSize={this.state.pageSize}
                 path = {`/topics/${topic}/articles/`}
+                page = {page}
               />
               <HomePageUI 
                 articles={
@@ -60,6 +62,7 @@ class TopicalArtcles extends React.Component {
                 size={articles.length}
                 pageSize={this.state.pageSize}
                 path = {`/topics/${topic}/articles/`}
+                page = {page}
               />
             </div>
         }
