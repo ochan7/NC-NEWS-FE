@@ -1,14 +1,18 @@
 import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
+import Button from 'material-ui/Button';
 const TopicsUI = ({topics}) => (
   <div>
     {topics.map(topic => (
       <Link
+        className='link-class'
         key={topic.slug}
         to={`/topics/${topic.slug}/articles`}
       >
-        {topic.title}
+        <Button>
+          {topic.title}
+        </Button>
       </Link>
     ))}
   </div>

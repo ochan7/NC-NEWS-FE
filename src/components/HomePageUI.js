@@ -6,7 +6,6 @@ import Card, { CardActions, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 
-
 const HomePageUI = ({articles}) => (
   <Grid container spacing = {8}>
     {articles.map(article => (
@@ -25,13 +24,12 @@ const HomePageUI = ({articles}) => (
           </CardContent>
           <CardActions>
             <Link
+              className='link-class'
               to={{
                 pathname: `/articles/${article._id}/comments`,
                 state: article
               }}
-              style={{ textDecoration: 'none' }}
             >
-
               <Button 
                 dense color="primary"
               >

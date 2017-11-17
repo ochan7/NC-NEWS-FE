@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch } from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom';
 import HomePage from '../containers/HomePage/index';
 import NoMatch from './NoMatch';
 import Comments from '../containers/Comments/index';
@@ -13,7 +13,11 @@ class App extends Component {
   render () {
     return (
       <Grid>
-        <h1>Northcoders News</h1>
+        <Link className='link-class' to = '/' style={{color: 'black'}}>
+          <h1>
+        Northcoders News
+          </h1>
+        </Link>
         <Navbar/>
         <Switch>
           <Route exact path='/' component={HomePage} />
