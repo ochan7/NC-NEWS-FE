@@ -2,10 +2,8 @@ import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
 import Grid from 'material-ui/Grid';
-import Card, { CardActions, CardContent} from 'material-ui/Card';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-
+import Card, { CardActions, CardContent, CardHeader} from 'material-ui/Card';
+import Button from 'material-ui/Button'; 
 const HomePageUI = ({articles}) => (
   <Grid container spacing = {8}>
     {articles.map(article => (
@@ -13,12 +11,9 @@ const HomePageUI = ({articles}) => (
         item xs ={12}
         key={article._id}
       >
-        <Card>
-          <CardContent>
-            <Typography type="headline">
-              {article.title}
-            </Typography>
-           
+        <Card spacing ={0}>
+          <CardHeader title = {article.title}/>
+          <CardContent>    
             <p>{article.body.slice(0,100)} ...</p>
             <p>Popularity {article.votes}</p>
           </CardContent>

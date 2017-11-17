@@ -45,6 +45,11 @@ class TopicalArtcles extends React.Component {
         {
           loading ? <Loading/> :
             <div>
+              <Paginator 
+                size={articles.length}
+                pageSize={this.state.pageSize}
+                path = {`/topics/${topic}/articles/`}
+              />
               <HomePageUI 
                 articles={
                   articles.slice(

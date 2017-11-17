@@ -4,3 +4,7 @@ html {
 .link-class {
     text-decoration: none;
 }
+.title-header {
+    color: black;
+    text-align: center;
+}

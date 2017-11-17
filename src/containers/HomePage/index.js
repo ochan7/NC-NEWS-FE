@@ -39,6 +39,11 @@ class HomePage extends React.Component {
         {
           loading ? <Loading/> :
             <div>
+              <Paginator 
+                size={articles.length}  
+                pageSize={this.state.pageSize}
+                path = '/home/'
+              />
               <HomePageUI 
                 articles={
                   articles.slice(

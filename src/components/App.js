@@ -13,7 +13,7 @@ class App extends Component {
   render () {
     return (
       <Grid>
-        <Link className='link-class' to = '/' style={{color: 'black'}}>
+        <Link className='link-class title-header' to = '/' >
           <h1>
         Northcoders News
           </h1>

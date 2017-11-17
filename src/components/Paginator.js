@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
+import Button from 'material-ui/Button';
 const Paginator = ({size, pageSize, path}) => {
 
   return (
@@ -8,8 +9,11 @@ const Paginator = ({size, pageSize, path}) => {
       {Array(Math.ceil(size / pageSize)).fill(0).map((butn, index) => (
         <Link to = {`${path}${index+1}`} 
           key = {index}
+          className='link-class'
         >
-          {index + 1}
+          <Button>
+            {index + 1}
+          </Button>
         </Link>
       ))}
     </div>
