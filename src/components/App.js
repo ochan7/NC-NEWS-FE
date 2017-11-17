@@ -7,11 +7,12 @@ import Navbar from './Navbar';
 import TopicalArticles from '../containers/TopicalArticles/index';
 import './App.css';
 import User from '../containers/User/index';
+import Grid from 'material-ui/Grid';
 class App extends Component {
 
   render () {
     return (
-      <div>
+      <Grid>
         <h1>Northcoders News</h1>
         <Navbar/>
         <Switch>
@@ -23,7 +24,7 @@ class App extends Component {
           <Route exact path ='/articles/:article_id/comments' component={Comments}/>
           <Route exact path = '/404' component = {NoMatch}/>
         </Switch>
-      </div>
+      </Grid>
     );
   }
 }

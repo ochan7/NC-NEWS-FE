@@ -1,23 +1,49 @@
 import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
+import Grid from 'material-ui/Grid';
+import Card, { CardActions, CardContent} from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+
+
 const HomePageUI = ({articles}) => (
-  <div>
+  <Grid container spacing = {8}>
     {articles.map(article => (
-      <div key={article._id}>
-        <h3>{article.title}</h3>
-        <p>{article.body.slice(0, 100)} ...</p>
-        <p>Popularity {article.votes}</p>
-        <Link 
-          to={{
-            pathname: `/articles/${article._id}/comments`,
-            state: article
-          }}>
-      Show More
-        </Link>
-      </div>
+      <Grid
+        item xs ={12}
+        key={article._id}
+      >
+        <Card>
+          <CardContent>
+            <Typography type="headline">
+              {article.title}
+            </Typography>
+           
+            <p>{article.body.slice(0,100)} ...</p>
+            <p>Popularity {article.votes}</p>
+          </CardContent>
+          <CardActions>
+            <Link
+              to={{
+                pathname: `/articles/${article._id}/comments`,
+                state: article
+              }}
+              style={{ textDecoration: 'none' }}
+            >
+
+              <Button 
+                dense color="primary"
+              >
+                Show Comments
+              </Button>
+            </Link>
+
+          </CardActions>
+        </Card>
+      </Grid>
     ))}
-  </div>
+  </Grid>
 );
 
 HomePageUI.propTypes = {
