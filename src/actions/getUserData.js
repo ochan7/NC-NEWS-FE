@@ -22,7 +22,7 @@ export default (username) => {
     dispatch(getUserDataRequest(username));
     return axios.get(`${API_URL}/users/${username}/repos`)
       .then(({data}) => {
-        dispatch(getUserDataSuccess(data.users));
+        dispatch(getUserDataSuccess(data));
       })
       .catch(error => {
         dispatch(getUserDataFailure(error.message));
