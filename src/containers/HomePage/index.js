@@ -18,7 +18,7 @@ class HomePage extends React.Component {
       pageSize: 10
     };
   }
-  componentDidMount(){
+  componentWillMount(){
     this.props.getArticles();
   }
   componentWillReceiveProps(nextProps){
