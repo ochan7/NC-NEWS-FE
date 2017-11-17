@@ -1,10 +1,10 @@
 import React from 'react';
 import PT from 'prop-types';
-
+import {Link} from 'react-router-dom';
 const CommentUI = ({comment}) => (
   <div>
     <p>{comment.body}</p>
-    <h4>{comment.created_by}</h4>
+    <Link to = {`/user/${comment.created_by}`}>{comment.created_by}</Link>  
   </div>
 );
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import PT from 'prop-types';
+import {Link} from 'react-router-dom';
 const ArticleUI = ({article}) => (
   <div>
     <h2>{article.title}</h2>
-    <h5>Author {article.created_by}</h5>
+    <Link to = {`/user/${article.created_by}`}>Author {article.created_by}</Link>
     <p>{article.body}</p>
   </div>
 );
