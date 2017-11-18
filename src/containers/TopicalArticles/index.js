@@ -53,6 +53,7 @@ class TopicalArtcles extends React.Component {
                 page = {page}
               />
               <HomePageUI 
+                loading = {loading}
                 articles={
                   articles.slice(
                     this.state.page * this.state.pageSize,

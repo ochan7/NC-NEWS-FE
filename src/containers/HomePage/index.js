@@ -3,10 +3,21 @@ import PT from 'prop-types';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import getArticles from '../../actions/getArticles';
-
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import orange from 'material-ui/colors/orange';
+import grey from 'material-ui/colors/grey';
+import red from 'material-ui/colors/red';
 import Loading from '../../components/Loading';
 import HomePageUI from '../../components/HomePageUI';
 import Paginator from '../../components/Paginator';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: orange, // Purple and green play nicely together.
+    secondary: grey,
+    error: red,
+  },
+});
 class HomePage extends React.Component {
   constructor (props) {
     super(props);
@@ -33,35 +44,37 @@ class HomePage extends React.Component {
     const {articles, loading, error} = this.props;
     const {page} = this.state;
     return (
-      <div>
-        {
-          error && <Redirect to = '/404'/>
-        }
-        {
-          loading ? <Loading/> :
-            <div>
-              <Paginator 
-                size={articles.length}  
-                pageSize={this.state.pageSize}
-                path = '/home/'
-                page = {page}
-              />
-              <HomePageUI
-                loading= {loading}
-                articles={
-                  articles.slice(
-                    this.state.page * this.state.pageSize,
-                    this.state.page * this.state.pageSize + this.state.pageSize
-                  )}/>
-              <Paginator 
-                size={articles.length}  
-                pageSize={this.state.pageSize}
-                path = '/home/'
-                page = {page}
-              />
-            </div>
-        }
-      </div>
+      <MuiThemeProvider theme = {theme}>
+        <div>
+          {
+            error && <Redirect to = '/404'/>
+          }
+          {
+            loading ? <Loading/> :
+              <div>
+                <Paginator 
+                  size={articles.length}  
+                  pageSize={this.state.pageSize}
+                  path = '/home/'
+                  page = {page}
+                />
+                <HomePageUI
+                  loading= {loading}
+                  articles={
+                    articles.slice(
+                      this.state.page * this.state.pageSize,
+                      this.state.page * this.state.pageSize + this.state.pageSize
+                    )}/>
+                <Paginator 
+                  size={articles.length}  
+                  pageSize={this.state.pageSize}
+                  path = '/home/'
+                  page = {page}
+                />
+              </div>
+          }
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

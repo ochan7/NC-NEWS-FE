@@ -8,12 +8,19 @@ import Loading from '../components/Loading';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
+import { withStyles } from 'material-ui/styles';
+
+const styles = {
+  card: {
+    minWidth: 1000,
+  }
+};
 const HomePageUI = ({articles, loading}) => (
-  <Grid container spacing = {8}>
+  <Grid container spacing = {16} direction="column" align="center">
     {loading && <Loading/>}
     {articles.map(article => (
       <Grid
-        item xs ={12}
+        item md ={11}
         key={article._id}
       >
         <Card>
@@ -28,7 +35,7 @@ const HomePageUI = ({articles, loading}) => (
                 </Button>
               </Link>
             </Typography>
-            <p>{article.body.slice(0,100)} ...</p>
+            <p>{article.body.slice(0,150)} ...</p>
 
           </CardContent>
           <CardActions dense = 'true'>
@@ -57,4 +64,4 @@ HomePageUI.propTypes = {
   articles: PT.array.isRequired,
   loading: PT.bool.isRequired
 };
-export default HomePageUI;
+export default withStyles(styles)(HomePageUI);
