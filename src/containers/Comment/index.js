@@ -4,9 +4,8 @@ import CommentUI from '../../components/CommentUI';
 import {connect} from 'react-redux';
 import putComment from '../../actions/putComment';
 import VotesUI from '../../components/VotesUI';
-import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
-import Card from 'material-ui/Card';
+import Card, {CardActions} from 'material-ui/Card';
 class Comment extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,7 @@ class Comment extends Component {
       deleted: false
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleIsDeleted = this.handleIsDeleted.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   componentWillReceiveProps(nextProps){
     this.setState({
@@ -35,7 +34,7 @@ class Comment extends Component {
       });
     };
   }
-  handleIsDeleted(){
+  handleDelete(){
     this.props.handleDelete();
     this.setState({
       deleted: true
@@ -46,13 +45,16 @@ class Comment extends Component {
     const{deleted} = this.state;
     return (
       <Grid>
-        {!deleted?
+        {!deleted && <div className = 'comments-container'>
           <Card>
             <CommentUI comment={comment}/>
-            {isDeleteAble && <Button onClick = {this.handleIsDeleted}>DELETE</Button>}
-            <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
-          </Card>
-          :<span/>
+            <CardActions>
+              <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}
+                isDeleteAble={isDeleteAble}
+                handleDelete={this.handleDelete}/>
+            </CardActions>
+          </Card> 
+        </div>
         }
       </Grid>
     );

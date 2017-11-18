@@ -1,21 +1,21 @@
 import React from 'react';
 import PT from 'prop-types';
 import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
-import ThumbUp from 'material-ui-icons/ThumbUp';
-import ThumbDown from 'material-ui-icons/ThumbDown';
-const VotesUI = ({votes, handleClick}) => (
-  <Grid>
-    <Typography className = 'vote-counter' type='cpation'>{votes}</Typography>
-    <ThumbUp onClick={handleClick('up')}/>
-    <span> </span>
-    <ThumbDown onClick = {handleClick('down')}/>
-  </Grid>
+const VotesUI = ({votes, handleClick, isDeleteAble, handleDelete}) => (
+  <div className = 'vote-container'>
+    <Button dense='true' disabled={true}><p className='vote-number'>{votes}</p></Button>
+    <Button onClick={handleClick('up')} dense = 'true'>like</Button>
+    <Button onClick={handleClick('down')} dense = 'true'>dislike</Button>
+    {isDeleteAble && <Button onClick={handleDelete} dense = 'true' className='delete-button'>
+    Delete
+    </Button>}
+  </div>
 );
 
 VotesUI.propTypes = {
   votes: PT.number.isRequired,
-  handleClick: PT.func.isRequired
+  handleClick: PT.func.isRequired,
+  handleDelete: PT.func.isRequired,
+  isDeleteAble: PT.bool.isRequired
 };
 export default VotesUI;

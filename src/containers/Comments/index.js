@@ -58,7 +58,7 @@ class Comments extends Component {
               {loadingNewPost && <Loading/>}
               {
                 [...this.state.comments,...comments].map((comment, index) =>(
-                  <div key = {index} className = 'comments-container'>
+                  <div key = {index}>
                     <Comment  
                       key = {index} 
                       comment = {comment}
