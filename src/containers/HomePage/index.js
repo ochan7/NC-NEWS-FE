@@ -46,7 +46,8 @@ class HomePage extends React.Component {
                 path = '/home/'
                 page = {page}
               />
-              <HomePageUI 
+              <HomePageUI
+                loading= {loading}
                 articles={
                   articles.slice(
                     this.state.page * this.state.pageSize,

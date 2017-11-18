@@ -2,20 +2,34 @@ import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
 import Grid from 'material-ui/Grid';
-import Card, { CardActions, CardContent, CardHeader} from 'material-ui/Card';
+import Card, { CardActions, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
-const HomePageUI = ({articles}) => (
+import Loading from '../components/Loading';
+import Typography from 'material-ui/Typography';
+import Avatar from 'material-ui/Avatar';
+import Chip from 'material-ui/Chip';
+const HomePageUI = ({articles, loading}) => (
   <Grid container spacing = {8}>
+    {loading && <Loading/>}
     {articles.map(article => (
       <Grid
         item xs ={12}
         key={article._id}
       >
         <Card>
-          <CardHeader title ={article.title} dense="true"/>
-          <CardContent dense = "true">
+          <CardContent dense = "false">
+            <Typography type= 'title'>{article.title}</Typography>
+            <Typography type= 'subheading'>Created by
+              <Link
+                className='link-class'
+                to={`/user/${article.created_by}`}>
+                <Button dense color="primary">
+                  {article.created_by}
+                </Button>
+              </Link>
+            </Typography>
             <p>{article.body.slice(0,100)} ...</p>
-            <p>Popularity {article.votes}</p>
+
           </CardContent>
           <CardActions dense = 'true'>
             <Link
@@ -28,14 +42,10 @@ const HomePageUI = ({articles}) => (
               Show Comments
               </Button>
             </Link>
-            <Link
-              className='link-class'
-              to={`/user/${article.created_by}`}>
-              <Button dense color="primary">
-                {article.created_by}
-              </Button>
-            </Link>
-
+            <Chip
+              avatar={<Avatar>{article.votes}</Avatar>}
+              label = 'Votes'
+            />
           </CardActions>
         </Card>
       </Grid>
@@ -44,6 +54,7 @@ const HomePageUI = ({articles}) => (
 );
 
 HomePageUI.propTypes = {
-  articles: PT.array.isRequired
+  articles: PT.array.isRequired,
+  loading: PT.bool.isRequired
 };
 export default HomePageUI;

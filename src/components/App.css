@@ -5,11 +5,15 @@ html {
     text-decoration: none;
 }
 .title-header {
-    color: black;
+    margin-top: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .pagination {
     align-content: center;
     text-align: center;
+}
+#root {
+    background-color: rgb(137, 225, 252);
 }

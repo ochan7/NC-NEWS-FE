@@ -5,6 +5,7 @@ import getTopics from '../../actions/getTopics';
 import Loading from '../../components/Loading';
 import TopicsUI from '../../components/TopicsUI';
 import {Redirect} from 'react-router-dom';
+import Grid from 'material-ui/Grid';
 class Topics extends Component {
   constructor (props) {
     super(props);
@@ -16,7 +17,7 @@ class Topics extends Component {
   render () {
     const {topics, loading, error} = this.props;
     return (
-      <div>
+      <Grid>
         {
           error && <Redirect to ='/404'/>
         }
@@ -24,7 +25,7 @@ class Topics extends Component {
           loading ? <Loading/> :
             <TopicsUI topics = {topics}/>
         }
-      </div>
+      </Grid>
     );
   }
 }
