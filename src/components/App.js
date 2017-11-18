@@ -9,8 +9,6 @@ import './App.css';
 import User from '../containers/User/index';
 import Grid from 'material-ui/Grid';
 import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 
 class App extends Component {
 
