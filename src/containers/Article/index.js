@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import getArticle from '../../actions/getArticle';
 import Votes from '../Votes/index';
 import Loading from '../../components/Loading';
+import Grid from 'material-ui/Grid';
 class Article extends Component {
   constructor (props) {
     super(props);
@@ -17,17 +18,17 @@ class Article extends Component {
     const {article, loading} = this.props;
     return (
 
-      <div>
+      <Grid container spacing = {16} direction="column" align="center">
         {loading ? 
           <Loading/> :
-          <div>
+          <Grid item lg = {11} >
             <ArticleUI article = {article}/>
             <Votes
               article ={article}
             />
-          </div>
+          </Grid>
         }
-      </div>
+      </Grid>
     );
   }
 }

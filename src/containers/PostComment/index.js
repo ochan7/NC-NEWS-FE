@@ -12,6 +12,7 @@ class PostComment extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleChange(e){
     const newText = e.target.value;
@@ -27,6 +28,11 @@ class PostComment extends Component {
       input: ''
     });
   }
+  handleKeyPress(e){
+    if(e.keyCode === 13) {
+      this.handleSubmit();
+    }
+  }
   render() {
 
     return (
@@ -34,6 +40,7 @@ class PostComment extends Component {
         <PostCommentUI 
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          handleKeyPress={this.handleKeyPress}
           value = {this.state.input}
         />
       </div>

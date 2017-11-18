@@ -15,7 +15,7 @@ class App extends Component {
   render () {
     return (
       <div>
-        <AppBar position = "static" color = "inherit" className = 'title-header'>
+        <AppBar position = "static" color = 'inherit' className = 'title-header'>
           <Link className='link-class title-header' to = '/' >
             <h1 className='title-header' >
         Northcoders News

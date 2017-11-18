@@ -14,5 +14,10 @@ html {
     text-align: center;
 }
 #root {
-    background-color: rgb(137, 225, 252);
+    background: linear-gradient(orange, yellow, orangered)
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }

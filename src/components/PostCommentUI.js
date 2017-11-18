@@ -2,11 +2,12 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import React from 'react';
 import PT from 'prop-types';
-const PostCommentUI = ({handleChange, handleSubmit, value}) => (
+const PostCommentUI = ({handleChange, handleSubmit, value, handleKeyPress}) => (
   <div>
     <TextField
       hintText='POST A COMMENT'
       onChange={handleChange}
+      onKeyDown={handleKeyPress}
       value = {value}
     />
     <Button
@@ -19,6 +20,7 @@ const PostCommentUI = ({handleChange, handleSubmit, value}) => (
 PostCommentUI.propTypes = {
   handleChange: PT.func.isRequired,
   handleSubmit: PT.func.isRequired,
+  handleKeyPress: PT.func.isRequired,
   value: PT.string.isRequired
 };
 export default PostCommentUI;

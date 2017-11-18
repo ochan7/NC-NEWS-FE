@@ -20,7 +20,7 @@ const HomePageUI = ({articles, loading}) => (
     {loading && <Loading/>}
     {articles.map(article => (
       <Grid
-        item md ={11}
+        item sm ={11}
         key={article._id}
       >
         <Card>
