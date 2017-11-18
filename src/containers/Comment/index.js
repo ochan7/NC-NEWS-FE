@@ -45,9 +45,9 @@ class Comment extends Component {
     const {comment, isDeleteAble} = this.props;
     const{deleted} = this.state;
     return (
-      <Grid item xs = {10}>
+      <Grid>
         {!deleted?
-          <Card >
+          <Card>
             <CommentUI comment={comment}/>
             {isDeleteAble && <Button onClick = {this.handleIsDeleted}>DELETE</Button>}
             <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>

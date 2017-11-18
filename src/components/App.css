@@ -23,3 +23,11 @@ body {
 .vote-container {
    padding-bottom: auto;
 }
+.comments-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.card {
+    width: 100%;
+}
