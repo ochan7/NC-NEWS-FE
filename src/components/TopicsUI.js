@@ -9,7 +9,7 @@ const TopicsUI = ({topics}) => (
       <Link
         className='link-class'
         key={topic.slug}
-        to={`/topics/${topic.slug}/articles`}
+        to={`/topics/${topic.slug}/articles/1`}
       >
         <Button >
           {topic.title}

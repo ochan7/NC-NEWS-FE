@@ -1,6 +1,10 @@
 html {
     font-family: Roboto;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
 .link-class {
     text-decoration: none;
 }
@@ -16,8 +20,6 @@ html {
 #root {
     background: linear-gradient(orange, yellow, orangered)
 }
-
-body {
-    margin: 0;
-    padding: 0;
+.vote-container {
+   padding-bottom: auto;
 }

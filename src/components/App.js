@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <AppBar position = "static" color = 'inherit' className = 'title-header'>
-          <Link className='link-class title-header' to = '/' >
+          <Link className='link-class title-header' to = '/home/1' >
             <h1 className='title-header' >
         Northcoders News
             </h1>

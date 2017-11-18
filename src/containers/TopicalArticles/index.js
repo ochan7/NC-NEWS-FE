@@ -21,6 +21,7 @@ class TopicalArtcles extends React.Component {
     const topic = this.props.match.params.topic;
     this.props.getArticlesByTopic(topic);
   }
+  
   componentWillReceiveProps(nextProps){
     const {page, topic} = nextProps.match.params;
     if(this.props.match.params.page !== page) {
