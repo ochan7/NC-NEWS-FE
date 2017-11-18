@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 import putComment from '../../actions/putComment';
 import VotesUI from '../../components/VotesUI';
 import Button from 'material-ui/Button';
-
+import Grid from 'material-ui/Grid';
+import Card from 'material-ui/Card';
 class Comment extends Component {
   constructor(props) {
     super(props);
@@ -44,16 +45,16 @@ class Comment extends Component {
     const {comment, isDeleteAble} = this.props;
     const{deleted} = this.state;
     return (
-      <div>
+      <Grid item xs = {10}>
         {!deleted?
-          <div>
+          <Card >
             <CommentUI comment={comment}/>
             {isDeleteAble && <Button onClick = {this.handleIsDeleted}>DELETE</Button>}
             <VotesUI votes = {this.state.votes} loading = {false} handleClick = {this.handleClick}/>
-          </div>
+          </Card>
           :<span/>
         }
-      </div>
+      </Grid>
     );
   }
 }

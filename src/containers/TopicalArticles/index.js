@@ -6,6 +6,18 @@ import getArticlesByTopic from '../../actions/getArticlesByTopic';
 import Paginator from '../../components/Paginator';
 import Loading from '../../components/Loading';
 import HomePageUI from '../../components/HomePageUI';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import orange from 'material-ui/colors/orange';
+import grey from 'material-ui/colors/grey';
+import red from 'material-ui/colors/red';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: orange, // Purple and green play nicely together.
+    secondary: grey,
+    error: red,
+  },
+});
 class TopicalArtcles extends React.Component {
   constructor (props) {
     super(props);
@@ -40,7 +52,7 @@ class TopicalArtcles extends React.Component {
     const {articles, loading, error, match : {params: {topic}}} = this.props;
     const {page} = this.state;
     return (
-      <div>
+      <MuiThemeProvider theme = {theme}>
         {
           error && <Redirect to = '/404'/>
         }
@@ -68,7 +80,7 @@ class TopicalArtcles extends React.Component {
               />
             </div>
         }
-      </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -6,19 +6,12 @@ import Typography from 'material-ui/Typography';
 import ThumbUp from 'material-ui-icons/ThumbUp';
 import ThumbDown from 'material-ui-icons/ThumbDown';
 const VotesUI = ({votes, handleClick}) => (
-  <div>
-    <Button onClick={handleClick('up')} dense='true'>
-      <ThumbUp/>
-    </Button>
-    <Button disabled = 'true' dense= 'true' color='primary'>
-      <Typography className = 'vote-counter' type='title'>{votes}</Typography>
-    </Button>
-    <Button
-      dense = 'true'
-      onClick={handleClick('down')}>
-      <ThumbDown/>
-    </Button>
-  </div>
+  <Grid>
+    <Typography className = 'vote-counter' type='cpation'>{votes}</Typography>
+    <ThumbUp onClick={handleClick('up')}/>
+    <span> </span>
+    <ThumbDown onClick = {handleClick('down')}/>
+  </Grid>
 );
 
 VotesUI.propTypes = {

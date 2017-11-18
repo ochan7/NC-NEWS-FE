@@ -12,6 +12,7 @@ const PostCommentUI = ({handleChange, handleSubmit, value, handleKeyPress}) => (
     />
     <Button
       onClick={handleSubmit}
+      disabled={value.length === 0}
     >
     SUBMIT
     </Button>

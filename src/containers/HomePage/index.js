@@ -3,13 +3,14 @@ import PT from 'prop-types';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import getArticles from '../../actions/getArticles';
+import Loading from '../../components/Loading';
+import HomePageUI from '../../components/HomePageUI';
+import Paginator from '../../components/Paginator';
+
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import orange from 'material-ui/colors/orange';
 import grey from 'material-ui/colors/grey';
 import red from 'material-ui/colors/red';
-import Loading from '../../components/Loading';
-import HomePageUI from '../../components/HomePageUI';
-import Paginator from '../../components/Paginator';
 
 const theme = createMuiTheme({
   palette: {

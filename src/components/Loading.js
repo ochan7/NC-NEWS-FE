@@ -13,7 +13,7 @@ const styles = theme => ({
 function Loading(props) {
   const { classes } = props;
   return (
-    <div>
+    <div style = {{textAlign: 'center'}}>
       <CircularProgress className={classes.progress} />
     </div>
   );

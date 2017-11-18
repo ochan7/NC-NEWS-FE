@@ -6,7 +6,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Votes from '../containers/Votes/index';
 const ArticleUI = ({article}) => (
-  <Card>
+  <Card raised = 'true'>
     <CardContent>
       <Typography type='title'>{article.title}</Typography>
       <Typography type= 'subheading'>Created by

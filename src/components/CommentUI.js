@@ -2,12 +2,14 @@ import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
 import timeSince from '../utils/index';
+import {CardContent} from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
 const CommentUI = ({comment}) => (
-  <div>
-    <p>{comment.body}</p>
+  <CardContent align = 'left'>
     <Link to = {`/user/${comment.created_by}`}>{comment.created_by}</Link>
-    <p>{timeSince(comment.created_at)}</p> 
-  </div>
+    <Typography type = 'caption'>{timeSince(comment.created_at)}</Typography> 
+    <p>{comment.body}</p>
+  </CardContent>
 );
 
 CommentUI.propTypes = {

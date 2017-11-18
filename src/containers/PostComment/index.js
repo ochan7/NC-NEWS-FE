@@ -37,7 +37,7 @@ class PostComment extends Component {
 
     return (
       <div>
-        <PostCommentUI 
+        <PostCommentUI
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           handleKeyPress={this.handleKeyPress}

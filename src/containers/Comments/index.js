@@ -8,6 +8,7 @@ import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
 import PostComment from '../PostComment/index';
 import deleteComment from '../../actions/deleteComment';
+import Grid from 'material-ui/Grid';
 class Comments extends Component {
   constructor (props) {
     super(props);
@@ -39,7 +40,7 @@ class Comments extends Component {
     const {comments, loading, error, loadingNewPost} = this.props;
     const {state: article} = this.props.location;
     return (
-      <div>
+      <Grid>
         <Article 
           article_id ={article._id}
         />
@@ -52,7 +53,7 @@ class Comments extends Component {
         }
         {
           loading ? <Loading/> :
-            <div>
+            <Grid container direction='column' align= 'center'>
               {loadingNewPost && <Loading/>}
               {
                 [...this.state.comments,...comments].map((comment, index) =>(
@@ -65,9 +66,9 @@ class Comments extends Component {
                 ))
               }
          
-            </div>
+            </Grid>
         }
-      </div>
+      </Grid>
     );
   }
 }

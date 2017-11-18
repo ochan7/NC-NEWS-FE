@@ -50,7 +50,7 @@ const HomePageUI = ({articles, loading}) => (
               </Button>
             </Link>
             <Chip
-              avatar={<Avatar>{article.votes}</Avatar>}
+              avatar={<Avatar>{''+article.votes}</Avatar>}
               label = 'Votes'
             />
           </CardActions>

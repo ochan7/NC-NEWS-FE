@@ -20,7 +20,8 @@ class Article extends Component {
       <Grid container spacing = {16} direction="column" align="center">
         {loading ? 
           <Loading/> :
-          <Grid item  lg = {10} >
+          <Grid item  md = {8}  align = 'left'>
+            <br/>
             <ArticleUI article = {article}/>
           </Grid>
         }
