@@ -6,6 +6,7 @@ import getArticle from '../../actions/getArticle';
 import Votes from '../Votes/index';
 import Loading from '../../components/Loading';
 import Grid from 'material-ui/Grid';
+import Card from 'material-ui/Card';
 class Article extends Component {
   constructor (props) {
     super(props);
@@ -21,11 +22,14 @@ class Article extends Component {
       <Grid container spacing = {16} direction="column" align="center">
         {loading ? 
           <Loading/> :
-          <Grid item lg = {11} >
-            <ArticleUI article = {article}/>
-            <Votes
-              article ={article}
-            />
+          <Grid item  = {11} >
+            <Card>
+
+              <ArticleUI article = {article}/>
+              <Votes
+                article ={article}
+              />
+            </Card>
           </Grid>
         }
       </Grid>

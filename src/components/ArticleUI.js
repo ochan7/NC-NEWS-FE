@@ -1,16 +1,23 @@
 import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
-import Card, {CardContent} from 'material-ui/Card';
+import {CardContent} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 const ArticleUI = ({article}) => (
-  <Card>
-    <CardContent>
-      <Typography type='title'>{article.title}</Typography>
-      <Link to = {`/user/${article.created_by}`}>Author {article.created_by}</Link>
-      <p>{article.body}</p>
-    </CardContent>
-  </Card>
+  <CardContent>
+    <Typography type='title'>{article.title}</Typography>
+    <Typography type= 'subheading'>Created by
+      <Link
+        className='link-class'
+        to={`/user/${article.created_by}`}>
+        <Button dense color="primary">
+          {article.created_by}
+        </Button>
+      </Link>
+    </Typography>
+    <p>{article.body}</p>
+  </CardContent>
 );
 
 ArticleUI.propTypes = {
