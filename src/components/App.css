@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .link-class {
     text-decoration: none;
 }
@@ -17,9 +18,17 @@ body {
     align-content: center;
     text-align: center;
 }
+
+
 #root {
-    background: linear-gradient(orange, yellow, orangered)
-}
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: scroll;
+    background: linear-gradient(orange, yellow, orangered);
+  }
 .comments-container, {
     margin-left: 20px;
     margin-right: 20px;

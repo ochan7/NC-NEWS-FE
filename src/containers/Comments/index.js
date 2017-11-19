@@ -63,7 +63,7 @@ class Comments extends Component {
           error && <Redirect to = '/404'/>
         }
 
-        <Grid container direction='column' align= 'left'>
+        <Grid container direction='column' align= 'left' spacing={16}>
           {loadingNewPost && <Loading/>}
           {
             loading ? <Loading/>:

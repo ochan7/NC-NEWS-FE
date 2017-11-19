@@ -72,12 +72,6 @@ class TopicalArtcles extends React.Component {
                     this.state.page * this.state.pageSize,
                     this.state.page * this.state.pageSize + this.state.pageSize
                   )}/>
-              <Paginator 
-                size={articles.length}
-                pageSize={this.state.pageSize}
-                path = {`/topics/${topic}/articles/`}
-                page = {page}
-              />
             </div>
         }
       </MuiThemeProvider>

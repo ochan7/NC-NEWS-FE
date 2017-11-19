@@ -66,12 +66,7 @@ class HomePage extends React.Component {
                       this.state.page * this.state.pageSize,
                       this.state.page * this.state.pageSize + this.state.pageSize
                     )}/>
-                <Paginator 
-                  size={articles.length}  
-                  pageSize={this.state.pageSize}
-                  path = '/home/'
-                  page = {page}
-                />
+
               </div>
           }
         </div>

@@ -8,7 +8,6 @@ const PostCommentUI = ({handleChange, handleSubmit, value, handleKeyPress}) => (
 
     <TextField
       label="Post a comment"
-      placeholder="Empty comments are disabled"
       multiline
       margin="normal"
       onChange={handleChange}

@@ -1,60 +1,74 @@
 import React, {Component} from 'react';
 import getUser from '../../actions/getUser';
+import getUserData from '../../actions/getUserData';
 import PT from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Loading from '../../components/Loading';
+import UserUI from '../../components/UserUI';
+import Grid from 'material-ui/Grid';
 class User extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: {},
-      loading: true,
-      error: null
+      loading: true
     };
   }
-  componentDidMount(){
+  componentWillMount(){
     const {username} = this.props.match.params;
-    this.props.getUser(username);
+    const {getUser, getUserData} = this.props;
+    getUser(username);
+    getUserData(username);
   }
-  componentWillReceiveProps(nextProps){
-    if(nextProps.user.length === 1) {
+  componentWillReceiveProps(nextProps) {
+    const {loading, user, userDataLoading} = nextProps;
+    if(loading === false && user.length === 1 && userDataLoading === false) {
       this.setState({
-        user: nextProps.user[0],
-        loading: nextProps.loading,
-        error: nextProps.error
+        loading: false
       });
     }
   }
   render () {
-    const {user, loading, error} = this.state;
+    const {user, error, userData, userDataLoading} = this.props;
     return (
 
-      <div>
+      <Grid container  >
         {error && <Redirect to ='/404'/>}
-        {loading ? <Loading/>:
-          <h3>{user.name} {user.username}</h3>
-        }
-      </div>
+        <UserUI 
+          loading={this.state.loading} 
+          user={user[0]}
+          userData={userData}
+          userDataLoading={userDataLoading}
+        />
+      </Grid>
     );
   }
 }
 const mapStateToProps = state => ({
   loading: state.getUser.loading,
   user: state.getUser.data,
-  error: state.getUser.error
+  error: state.getUser.error,
+  userData: state.getUserData.data,
+  userDataError: state.getUserData.error,
+  userDataLoading: state.getUserData.loading
 });
 
 const mapDispatchToProps = dispatch => ({
   getUser: (username) => {
     dispatch(getUser(username));
+  },
+  getUserData: (username) => {
+    dispatch(getUserData(username));
   }
 });
 User.propTypes = {
   getUser: PT.func.isRequired,
   match: PT.object.isRequired,
   loading: PT.bool.isRequired,
-  user: PT.object.isRequired,
-  error: PT.any.isRequired
+  user: PT.array.isRequired,
+  error: PT.any.isRequired,
+  getUserData: PT.func.isRequired,
+  userDataLoading: PT.bool.isRequired,
+  userData: PT.object.isRequired,
+  userDataError: PT.any.isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(User);
