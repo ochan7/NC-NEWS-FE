@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import {connect} from 'react-redux';
 import postComment from '../../actions/postComment';
 import PostCommentUI from '../../components/PostCommentUI';
-
+import Grid from 'material-ui/Grid';
 class PostComment extends Component {
   constructor (props) {
     super (props);
@@ -36,13 +36,16 @@ class PostComment extends Component {
   render() {
 
     return (
-      <div>
-        <PostCommentUI
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          handleKeyPress={this.handleKeyPress}
-          value = {this.state.input}
-        />
+      <div className = 'post-container'>
+
+        <Grid container >
+          <PostCommentUI
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            handleKeyPress={this.handleKeyPress}
+            value = {this.state.input}
+          />
+        </Grid>
       </div>
     );
   }

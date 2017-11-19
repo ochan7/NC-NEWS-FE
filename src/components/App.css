@@ -20,7 +20,7 @@ body {
 #root {
     background: linear-gradient(orange, yellow, orangered)
 }
-.comments-container {
+.comments-container, {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -32,4 +32,11 @@ body {
 .delete-button {
     text-decoration-color: red;
     font-size: 1rem;
+}
+
+.post-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    
 }

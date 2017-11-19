@@ -5,6 +5,7 @@ import Card, {CardContent, CardActions} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Votes from '../containers/Votes/index';
+import PostComment from '../containers/PostComment/index';
 const ArticleUI = ({article}) => (
   <Card raised = 'true'>
     <CardContent>
@@ -23,6 +24,7 @@ const ArticleUI = ({article}) => (
     <CardActions>
       <Votes article={article}/>
     </CardActions>
+    <PostComment article={article}/>
   </Card>
 );
 

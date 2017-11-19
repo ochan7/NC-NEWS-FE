@@ -3,19 +3,28 @@ import Button from 'material-ui/Button';
 import React from 'react';
 import PT from 'prop-types';
 const PostCommentUI = ({handleChange, handleSubmit, value, handleKeyPress}) => (
+
   <div>
+
     <TextField
-      hintText='POST A COMMENT'
+      label="Post a comment"
+      placeholder="Empty comments are disabled"
+      multiline
+      margin="normal"
       onChange={handleChange}
       onKeyDown={handleKeyPress}
       value = {value}
     />
+
+
     <Button
       onClick={handleSubmit}
       disabled={value.length === 0}
     >
     SUBMIT
     </Button>
+
+
   </div>
 );
 PostCommentUI.propTypes = {

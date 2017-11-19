@@ -6,14 +6,13 @@ import Comment from '../Comment/index';
 import Loading from '../../components/Loading';
 import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
-import PostComment from '../PostComment/index';
 import deleteComment from '../../actions/deleteComment';
 import Grid from 'material-ui/Grid';
 class Comments extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      comments: []
+      comments: [],
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -21,56 +20,65 @@ class Comments extends Component {
     const article_id = this.props.location.state._id;
     this.props.getComments(article_id);
   }
+  
   componentWillReceiveProps(nextProps){
-    const {newPost} = nextProps;
-    if(this.props.newPost !== newPost) {
-      const prevComment = this.state.comments;
+    const currLength = this.state.comments.length;
+    if(currLength === 0) {
       this.setState({
-        comments: [...newPost, ...prevComment]
-      });
+        comments: nextProps.comments
+      });    
+    }
+    const {newPost} = nextProps;
+    if(newPost[0] !== undefined) {
+
+      if(this.state.comments.findIndex(item => item._id === newPost[0]._id) < 0) {
+        const prevComment = this.state.comments;
+        this.setState({
+          comments: [...newPost, ...prevComment]
+        });
+      }
     }
   }
-  handleDelete(comment_id){
+  handleDelete(comment_id, index){
     const {deleteComment} = this.props;
+    const oldComments = this.state.comments;
+    const newComments = [...oldComments.slice(0, +index), ...oldComments.slice(+index)];
     return () => {
       deleteComment(comment_id);
+      this.setState({
+        comments: newComments
+      });
     };
   }
   render () {
-    const {comments, loading, error, loadingNewPost} = this.props;
+    const {loading, error, loadingNewPost} = this.props;
     const {state: article} = this.props.location;
     return (
       <Grid>
         <Article 
           article_id ={article._id}
         />
-        <PostComment 
-          article ={article}
-        />
         <h3>Comments</h3>
         {
           error && <Redirect to = '/404'/>
         }
-        {
-          loading ? <Loading/> :
 
-            <Grid container direction='column' align= 'left'>
-              {loadingNewPost && <Loading/>}
-              {
-                [...this.state.comments,...comments].map((comment, index) =>(
-                  <div key = {index}>
-                    <Comment  
-                      key = {index} 
-                      comment = {comment}
-                      isDeleteAble = {comment.created_by === 'northcoder'}
-                      handleDelete = {this.handleDelete(comment._id)}
-                    />
-                  </div>
-                ))
-              }
+        <Grid container direction='column' align= 'left'>
+          {loadingNewPost && <Loading/>}
+          {
+            loading ? <Loading/>:
+              [...this.state.comments].map((comment, index) =>(
+                <Comment
+                  deleteLoading = {loading}
+                  key = {index} 
+                  comment = {comment}
+                  isDeleteAble = {comment.created_by === 'northcoder'}
+                  handleDelete = {this.handleDelete(comment._id, index)}
+                />
+              ))
+          }
          
-            </Grid>
-        }
+        </Grid>
       </Grid>
     );
   }
@@ -84,13 +92,14 @@ Comments.propTypes = {
   newPost: PT.array.isRequired,
   loadingNewPost: PT.bool.isRequired,
   newPostError: PT.any.isRequired,
+  deleteLoading: PT.bool.isRequired,
   deleteComment: PT.func.isRequired
 };
 
 const mapStateToProps = state => {
   const {data, loading, error} = state.getComments;
   const {data: newPost, loading: loadingNewPost, error: newPostError} = state.postComment;
-  const {data:deleteData} = state.deleteComment;
+  const {data:deleteData, loading: deleteLoading} = state.deleteComment;
   return {
     comments: data,
     loading,
@@ -98,7 +107,8 @@ const mapStateToProps = state => {
     newPost,
     loadingNewPost,
     newPostError,
-    deleteData
+    deleteData,
+    deleteLoading
   };
 };
 const mapDispatchToProps = dispatch => ({
