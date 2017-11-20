@@ -44,7 +44,7 @@ class Comment extends Component {
     const {comment, isDeleteAble} = this.props;
     const{deleted} = this.state;
     return (
-      <Grid>
+      <Grid item xs= {11}>
         {!deleted && <div className = 'comments-container'>
           <Card>
             <CommentUI comment={comment}/>

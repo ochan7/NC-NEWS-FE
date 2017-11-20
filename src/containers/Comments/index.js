@@ -8,6 +8,7 @@ import {Redirect} from 'react-router-dom';
 import Article from '../Article/index';
 import deleteComment from '../../actions/deleteComment';
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 class Comments extends Component {
   constructor (props) {
     super(props);
@@ -58,16 +59,15 @@ class Comments extends Component {
         <Article 
           article_id ={article._id}
         />
-        <h3>Comments</h3>
+        {error && <Redirect to = '/404'/>}
+        {loadingNewPost && <Loading/>}
         {
-          error && <Redirect to = '/404'/>
-        }
-
-        <Grid container direction='column' align= 'left' spacing={16}>
-          {loadingNewPost && <Loading/>}
-          {
-            loading ? <Loading/>:
-              [...this.state.comments].map((comment, index) =>(
+          loading ? <Loading/>:
+            <Grid container align= 'left' spacing={16} justify = 'center'>
+              <Grid item xs={11}>
+                <Typography type = 'title'>Comments</Typography>
+              </Grid>
+              {[...this.state.comments].map((comment, index) =>(
                 <Comment
                   deleteLoading = {loading}
                   key = {index} 
@@ -75,10 +75,10 @@ class Comments extends Component {
                   isDeleteAble = {comment.created_by === 'northcoder'}
                   handleDelete = {this.handleDelete(comment._id, index)}
                 />
-              ))
-          }
+              ))}
+            </Grid>
+        }
          
-        </Grid>
       </Grid>
     );
   }
