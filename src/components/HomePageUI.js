@@ -12,10 +12,10 @@ import { withStyles } from 'material-ui/styles';
 
 const styles = {
   card: {
-    minWidth: 1000,
+    maxWidth: 800,
   }
 };
-const HomePageUI = ({articles, loading}) => (
+const HomePageUI = ({articles, loading, classes}) => (
   <Grid container spacing = {16} direction="column" align="center">
     {loading && <Loading/>}
     {articles.map(article => (
@@ -23,7 +23,7 @@ const HomePageUI = ({articles, loading}) => (
         item sm ={11}
         key={article._id}
       >
-        <Card>
+        <Card className={classes.card}>
           <CardContent dense = "false">
             <Typography type= 'title'>{article.title}</Typography>
             <Typography type= 'subheading'>Created by
@@ -61,6 +61,7 @@ const HomePageUI = ({articles, loading}) => (
 );
 
 HomePageUI.propTypes = {
+  classes: PT.object.isRequired,
   articles: PT.array.isRequired,
   loading: PT.bool.isRequired
 };
