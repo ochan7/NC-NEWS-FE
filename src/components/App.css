@@ -27,7 +27,7 @@ body {
     bottom: 0;
     right: 0;
     overflow: scroll;
-    background: linear-gradient(orange, yellow, orangered);
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   }
 .comments-container, {
     margin-left: 20px;
