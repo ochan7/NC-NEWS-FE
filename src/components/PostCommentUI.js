@@ -14,8 +14,6 @@ const PostCommentUI = ({handleChange, handleSubmit, value, handleKeyPress}) => (
       onKeyDown={handleKeyPress}
       value = {value}
     />
-
-
     <Button
       onClick={handleSubmit}
       disabled={value.length === 0}

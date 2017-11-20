@@ -14,7 +14,7 @@ import red from 'material-ui/colors/red';
 
 const theme = createMuiTheme({
   palette: {
-    primary: orange, // Purple and green play nicely together.
+    primary: orange,
     secondary: grey,
     error: red,
   },

@@ -1,1 +1,1 @@
-export const API_URL = 'https://olie-chan-nc-news.herokuapp.com/api';
+export const API_URL = 'http://localhost:5000';
