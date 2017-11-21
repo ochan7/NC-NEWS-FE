@@ -6,8 +6,6 @@ import Card, { CardActions, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Loading from '../components/Loading';
 import Typography from 'material-ui/Typography';
-import Avatar from 'material-ui/Avatar';
-import Chip from 'material-ui/Chip';
 import { withStyles } from 'material-ui/styles';
 
 const styles = {
@@ -25,7 +23,14 @@ const HomePageUI = ({articles, loading, classes}) => (
       >
         <Card className={classes.card}>
           <CardContent dense = "false">
-            <Typography type= 'title'>{article.title}</Typography>
+            <Link
+              className='link-class'
+              to={{
+                pathname: `/articles/${article._id}/comments`,
+                state: article
+              }}>
+              <Typography type= 'headline'>{article.title}</Typography>
+            </Link>
             <Typography type= 'subheading'>Created by
               <Link
                 className='link-class'
@@ -35,24 +40,21 @@ const HomePageUI = ({articles, loading, classes}) => (
                 </Button>
               </Link>
             </Typography>
-            <p>{article.body.slice(0,150)} ...</p>
-
-          </CardContent>
-          <CardActions dense = 'true'>
             <Link
               className='link-class'
               to={{
                 pathname: `/articles/${article._id}/comments`,
                 state: article
               }}>
-              <Button dense color="primary">
-              Show Comments
-              </Button>
+              <Typography type= 'body' noWrap='true' className='article-snippet'>{article.body}</Typography>
             </Link>
-            <Chip
-              avatar={<Avatar>{''+article.votes}</Avatar>}
-              label = 'Votes'
-            />
+          </CardContent>
+          <CardActions dense = 'true' align='center'>
+            <Button disabled = 'true'>
+              <Typography className = 'article-snippet'>
+                {article.votes} LIKES
+              </Typography>
+            </Button>
           </CardActions>
         </Card>
       </Grid>
