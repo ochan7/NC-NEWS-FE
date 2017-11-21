@@ -14,6 +14,7 @@ class Comments extends Component {
     super(props);
     this.state = {
       comments: [],
+      id: ''
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -23,38 +24,44 @@ class Comments extends Component {
   }
   
   componentWillReceiveProps(nextProps){
-    // const prev_id = this.props.location.state._id;
-    // const next_id = nextProps.location.state._id;
     const currLength = this.state.comments.length;
-    if(currLength === 0 || this.props.loading === true && nextProps.loading === false) {
+    const prevComments = this.state.comments;
+    const {loading, deleteLoading} = this.props;
+    const {newPost} = nextProps;
+
+    if(currLength === 0 || loading && !nextProps.loading) {
       this.setState({
         comments: nextProps.comments
       });    
     }
-    const {newPost} = nextProps;
-    if(newPost[0] !== undefined) {
-      if(this.state.comments.findIndex(item => item._id === newPost[0]._id) < 0) {
-        const prevComment = this.state.comments;
+
+    else if(newPost[0] !== undefined) {
+      if(prevComments.findIndex(item => item._id === newPost[0]._id) < 0) {
         this.setState({
-          comments: [...newPost, ...prevComment]
+          comments: [...newPost, ...prevComments]
         });
       }
     }
+
+    else if(deleteLoading && !nextProps.deleteLoading ){
+      this.setState({
+        comments: prevComments.filter(comnent => comnent._id !== this.state.id)
+      });
+    }
   }
-  handleDelete(comment_id, index){
+  handleDelete(comment_id){
     const {deleteComment} = this.props;
-    const oldComments = this.state.comments;
-    const newComments = [...oldComments.slice(0, +index), ...oldComments.slice(+index)];
     return () => {
       deleteComment(comment_id);
       this.setState({
-        comments: newComments
+        id: comment_id
       });
     };
   }
   render () {
     const {loading, error, loadingNewPost} = this.props;
     const {state: article} = this.props.location;
+    const {comments} = this.state;
     return (
       <Grid>
         <Article 
@@ -64,19 +71,21 @@ class Comments extends Component {
         {loadingNewPost && <Loading/>}
         {
           loading ? <Loading/>:
-            <Grid container align= 'left' spacing={16} justify = 'center'>
+            <Grid container align= 'left'  justify = 'center'>
               <Grid item xs={11}>
                 <Typography type = 'title'>Comments</Typography>
               </Grid>
-              {[...this.state.comments].map((comment, index) =>(
-                <Comment
-                  deleteLoading = {loading}
-                  key = {index} 
-                  comment = {comment}
-                  isDeleteAble = {comment.created_by === 'northcoder'}
-                  handleDelete = {this.handleDelete(comment._id, index)}
-                />
-              ))}
+              {
+                [...comments]
+                  .map((comment, index) =>(
+                    <Comment
+                      deleteLoading = {loading}
+                      key = {index} 
+                      comment = {comment}
+                      isDeleteAble = {comment.created_by === 'northcoder'}
+                      handleDelete = {this.handleDelete(comment._id)}
+                    />
+                  ))}
             </Grid>
         }
          
