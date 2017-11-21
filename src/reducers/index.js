@@ -1,5 +1,4 @@
 import {combineReducers} from 'redux';
-
 import test from './test';
 import getArticles from './getArticles';
 import getArticlesByTopic from './getArticlesByTopic';
@@ -12,6 +11,7 @@ import putArticle from './putArticle';
 import putComment from './putComment';
 import getArticle from './getArticle';
 import deleteComment from './deleteComment';
+
 const reducer = combineReducers({
   test, 
   getArticles, 

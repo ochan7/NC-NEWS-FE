@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import PT from 'prop-types';
 import {connect} from 'react-redux';
 import putArticle from '../../actions/putArticle';
+
 class Votes extends Component {
   constructor(props) {
     super(props);

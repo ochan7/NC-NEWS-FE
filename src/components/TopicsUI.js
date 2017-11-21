@@ -3,6 +3,7 @@ import PT from 'prop-types';
 import {Link} from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
+
 const TopicsUI = ({topics}) => (
   <Grid>
     {topics.map(topic => (

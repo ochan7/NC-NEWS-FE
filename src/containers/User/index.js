@@ -6,6 +6,7 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import UserUI from '../../components/UserUI';
 import Grid from 'material-ui/Grid';
+
 class User extends Component {
   constructor (props) {
     super(props);

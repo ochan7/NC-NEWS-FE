@@ -2,6 +2,7 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import React from 'react';
 import PT from 'prop-types';
+
 const PostCommentUI = ({handleChange, handleSubmit, value, handleKeyPress}) => (
 
   <div>

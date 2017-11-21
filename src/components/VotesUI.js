@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 import Button from 'material-ui/Button';
+
 const VotesUI = ({votes, handleClick, isDeleteAble, handleDelete}) => (
   <div className = 'vote-container'>
     <Button dense='true' disabled={true}><p className='vote-number'>{votes}</p></Button>

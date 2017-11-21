@@ -6,6 +6,7 @@ import putComment from '../../actions/putComment';
 import VotesUI from '../../components/VotesUI';
 import Grid from 'material-ui/Grid';
 import Card, {CardActions} from 'material-ui/Card';
+
 class Comment extends Component {
   constructor(props) {
     super(props);

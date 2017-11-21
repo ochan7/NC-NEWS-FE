@@ -2,6 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 import {Link} from 'react-router-dom';
 import Button from 'material-ui/Button';
+
 const Paginator = ({size, pageSize, path , page}) => {
   const numPages = Math.ceil(size / pageSize);
   let prevPage = page === 0 ? 1 : page;

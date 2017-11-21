@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import postComment from '../../actions/postComment';
 import PostCommentUI from '../../components/PostCommentUI';
 import Grid from 'material-ui/Grid';
+
 class PostComment extends Component {
   constructor (props) {
     super (props);

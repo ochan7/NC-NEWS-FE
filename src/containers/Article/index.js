@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import getArticle from '../../actions/getArticle';
 import Loading from '../../components/Loading';
 import Grid from 'material-ui/Grid';
+
 class Article extends Component {
   constructor (props) {
     super(props);

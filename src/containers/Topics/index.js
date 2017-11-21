@@ -6,6 +6,7 @@ import Loading from '../../components/Loading';
 import TopicsUI from '../../components/TopicsUI';
 import {Redirect} from 'react-router-dom';
 import Grid from 'material-ui/Grid';
+
 class Topics extends Component {
   constructor (props) {
     super(props);

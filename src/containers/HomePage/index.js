@@ -6,7 +6,6 @@ import getArticles from '../../actions/getArticles';
 import Loading from '../../components/Loading';
 import HomePageUI from '../../components/HomePageUI';
 import Paginator from '../../components/Paginator';
-
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import orange from 'material-ui/colors/orange';
 import grey from 'material-ui/colors/grey';

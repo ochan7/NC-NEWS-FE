@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid';
 import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
 import HomePageUI from './HomePageUI';
 import { withStyles } from 'material-ui/styles';
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
