@@ -17,21 +17,22 @@ class Comments extends Component {
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
-  componentDidMount(){
+  componentWillMount(){
     const article_id = this.props.location.state._id;
     this.props.getComments(article_id);
   }
   
   componentWillReceiveProps(nextProps){
+    // const prev_id = this.props.location.state._id;
+    // const next_id = nextProps.location.state._id;
     const currLength = this.state.comments.length;
-    if(currLength === 0) {
+    if(currLength === 0 || this.props.loading === true && nextProps.loading === false) {
       this.setState({
         comments: nextProps.comments
       });    
     }
     const {newPost} = nextProps;
     if(newPost[0] !== undefined) {
-
       if(this.state.comments.findIndex(item => item._id === newPost[0]._id) < 0) {
         const prevComment = this.state.comments;
         this.setState({
