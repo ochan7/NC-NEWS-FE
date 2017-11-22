@@ -46,7 +46,7 @@ const HomePageUI = ({articles, loading, classes}) => (
                 pathname: `/articles/${article._id}/comments`,
                 state: article
               }}>
-              <Typography type= 'body' noWrap='true' className='article-snippet'>{article.body}</Typography>
+              <Typography type= 'body' className='article-snippet'>{article.body.slice(0,130)} ...</Typography>
             </Link>
           </CardContent>
           <CardActions dense = 'true' align='center'>
