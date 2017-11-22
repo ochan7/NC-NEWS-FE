@@ -1,6 +1,6 @@
 # Front-end for Northcoders News
 
-This project which create a reddit style news article page, using the back-end from my other project found [here](https://github.com/ochan7/NC-NEWS-BE);
+This project which create a reddit style news article page, using the back-end from my other project found [here](https://github.com/ochan7/NC-NEWS-BE). To see what the deployed project looks like visit this address https://oc-nc-news.herokuapp.com/.
 
 ## Getting Started
 
