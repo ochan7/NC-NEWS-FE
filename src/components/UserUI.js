@@ -45,6 +45,7 @@ class UserUI extends React.Component {
                 <CardMedia
                   src = {user.avatar_url}
                   component = 'img'
+                  title={`avatar image for ${user.name}`}
                 />
               </Card>
             }
